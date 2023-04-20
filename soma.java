@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Soma{
+class soma{
     public static void main (String[] args) {
     //variaveis
     int A, B, soma;

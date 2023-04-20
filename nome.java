@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Nome{
+public class nome{
     public static void main(String[] args){
         //variáveis
         String nome;

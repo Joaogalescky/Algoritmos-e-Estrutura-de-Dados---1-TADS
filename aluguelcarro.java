@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AluguelCarro{
+public class aluguelcarro{
     public static void main(String[] args){
         //variáveis
         String nome;

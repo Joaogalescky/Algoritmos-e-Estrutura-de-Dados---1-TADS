@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class Teste {
     public static void main(String[] args) {
         //e: &&

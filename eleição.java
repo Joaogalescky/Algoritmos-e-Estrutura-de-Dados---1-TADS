@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Eleição{
+class eleição{
     public static void main (String[] args) {
         //variaveis
         float Candidato_1, Candidato_2, Candidato_3, Votos_branco, Votos_nulo, Total_eleitores;

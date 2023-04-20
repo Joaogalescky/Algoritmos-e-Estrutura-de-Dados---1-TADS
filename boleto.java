@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Boleto{
+class boleto{
     public static void main (String[] args) {
         //variaveis
         int dias;

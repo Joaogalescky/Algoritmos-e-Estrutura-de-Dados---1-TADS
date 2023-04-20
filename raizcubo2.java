@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-class Raiz{
-    public static void main(String args){
-
+public class raizcubo2{
+    public static void main(String[] args){
         //variaveis
         float valor;
         float raiz;
+        double expoente;
         Scanner entrada;
 
         //entrada
@@ -15,10 +15,10 @@ class Raiz{
 
         //processamento
         raiz = (float) Math.sqrt(valor);
-        pot = (float) Math.pow(valor, 3);
+        expoente = Math.pow(valor, 3);
 
         //saida
-        System.out.printf("Raiz : %f\n", raiz)
-        System.out.printf("Ao cubo : %f\n", pot);
+        System.out.printf("Raiz : %.2f\n", raiz);
+        System.out.printf("Ao cubo : %.2f\n", expoente);
     }
     }
