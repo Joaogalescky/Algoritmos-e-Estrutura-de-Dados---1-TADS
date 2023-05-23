@@ -1,3 +1,4 @@
+package caso;
 import java.util.Scanner;
 public class calculadora3{
     public static void main(String[] args){

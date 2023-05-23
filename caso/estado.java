@@ -1,3 +1,4 @@
+package caso;
 import java.util.Scanner;
 
 public class estado{
@@ -9,7 +10,7 @@ public class estado{
 
         //entrada
             entrada = new Scanner(System.in);
-            System.println("Digite uma sigla de Estado: ");
+            System.out.println("Digite uma sigla de Estado: ");
             sigla_estado = entrada.next();
             entrada.close();
 
@@ -42,7 +43,7 @@ public class estado{
         case "DF":
         case "df":
         System.out.println("Código 53, Estado Distrito Federal, Região Centro Oeste");
-        default
+        default:
         System.out.println("Sigla inválida");
         }
     }
