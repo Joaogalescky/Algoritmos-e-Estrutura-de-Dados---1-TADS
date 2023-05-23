@@ -1,6 +1,7 @@
+package atividades;
 import java.util.Scanner;
 
-public class carro{
+public class carrofixo{
         public static void main (String[] args) {
         //variaveis
         float Carro_fabrica, Carro_novo, Distribuidor_porc, Imposto_porc;

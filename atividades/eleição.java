@@ -1,3 +1,4 @@
+package atividades;
 import java.util.Scanner;
 
 class eleição{
