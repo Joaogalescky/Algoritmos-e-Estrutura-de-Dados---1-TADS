@@ -1,3 +1,4 @@
+package repetição;
 import java.util.Scanner;
 public class Menor {
     public static void main(String[] args) {
