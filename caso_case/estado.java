@@ -1,4 +1,4 @@
-package caso;
+package caso_case;
 import java.util.Scanner;
 
 public class estado{

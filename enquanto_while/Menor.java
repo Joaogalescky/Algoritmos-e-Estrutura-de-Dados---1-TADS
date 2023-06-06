@@ -1,4 +1,4 @@
-package repetição;
+package enquanto_while;
 import java.util.Scanner;
 public class Menor {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package repetição;
+package enquanto_while;
 import java.util.Scanner;
 public class tabuada {
     public static void main(String[] args){
@@ -16,8 +16,7 @@ public class tabuada {
         while(repetidor<=10){
             resultado = numero*repetidor;
             System.out.printf("%dx%d=%d\n", numero, repetidor, resultado);
-            repetidor++;
-            entrada.close();    
+            repetidor++;  
         }
     }
 }

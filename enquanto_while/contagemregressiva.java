@@ -1,4 +1,4 @@
-package enquanto;
+package enquanto_while;
 import java.lang.Thread;
 //para utilizar o timer de saida, precisa importar esse procedimento
 class contagemregressiva{

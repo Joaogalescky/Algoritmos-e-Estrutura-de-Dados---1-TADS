@@ -5,7 +5,7 @@ public class beecrowd1153 {
     public static void main(String[] args) {
  
     //variaveis
-    int N, repetidor;
+    int N;
     Scanner entrada;
     
     //entrada

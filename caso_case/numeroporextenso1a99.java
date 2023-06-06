@@ -1,3 +1,4 @@
+package caso_case;
 import java.util.Scanner;
 
 public class numeroporextenso1a99 {

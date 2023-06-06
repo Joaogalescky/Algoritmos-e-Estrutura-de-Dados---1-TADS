@@ -1,4 +1,4 @@
-package repetição;
+package enquanto_while;
 import java.util.Scanner;
 
 public class pares {
