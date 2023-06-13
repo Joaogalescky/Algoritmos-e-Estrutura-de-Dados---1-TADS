@@ -5,11 +5,11 @@ public class Modularização2{
     static Scanner entrada = new Scanner (System.in);
 
     public static void cabecalho() { //Em portugal, é uma modalização
-        System.out.println("+=+=+=+=+=+=+=+=+="); //Modulo
+        System.out.println("+=+=+=+=+=+=+=+=+="); //Metodo
     }
 
     public static String getString() { //No public static, o retorno será em "String" (Texto), diferente de "void"
-        String st;
+        String st;                     // Função, pois deve retornar algo (return)
         st = entrada.next();
 
         return st;
