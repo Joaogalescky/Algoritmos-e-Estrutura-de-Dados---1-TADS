@@ -1,28 +1,23 @@
 import java.util.Scanner;
 
-public class beecrowd1144 {
- 
-    public static void main(String[] args){
- 
+class beecrowd1144{
+    public static void main(String[]args){
+
         //variaveis
-        int N, Calc1, Calc2, Calc3, repetidor;
         Scanner entrada;
-        
+        int i, n;
+
         //entrada
         entrada = new Scanner(System.in);
-        N = entrada.nextInt();
+        n = entrada.nextInt();
         entrada.close();
-        
+
         //processamento e saida
-        if(N>1 && N<1000){
-            repetidor=0;
-            while(repetidor<=N){
-                Calc1 = repetidor;
-                Calc2 = repetidor+Calc1;
-                Calc3 = Calc2*2;
-                System.out.printf("%d %d %d\n",Calc1, Calc2, Calc3);
-                repetidor = repetidor + 1;
-            }
+        for(i=1;i<=n;i++){
+            //o repetidor "i" vai verificar se é menor ou igual a "n", se for, vai acrescentar 1
+            //na saída, vai multiplicar "i" por ele mesmo, e depois vai acrescentar 1 nessa multiplicação
+            System.out.printf("%d %d %d\n", i, i*i, i*i*i);
+            System.out.printf("%d %d %d\n", i, i*i+1, i*i*i+1);
         }
     }
 }
