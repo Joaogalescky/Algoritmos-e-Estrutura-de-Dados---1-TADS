@@ -1,3 +1,5 @@
+package atividades;
+
 import java.util.Scanner;
 
 public class Modularização2{
