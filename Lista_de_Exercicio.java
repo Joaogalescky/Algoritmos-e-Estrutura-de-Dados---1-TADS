@@ -4,6 +4,8 @@
 
 import java.util.Scanner;
 
+import javax.security.auth.x500.X500Principal;
+
 public class Lista_de_Exercicio{
 
     //Primos Intervalo
@@ -132,7 +134,7 @@ public class Lista_de_Exercicio{
     public static void Piramide(int numero){
 
         if(numero>=1){
-                String linha = repetidor_String("_", numero); //Para imprimir a primeira linha
+                String linha = repetidor_String("_", numero); //Para imprimir a primeira linha, conforme o numero
                 System.out.printf("+ %s_%s +\n", linha, linha);
             for(int i = 1; i <= numero; i++){ //Para imprimir a ordem dos numeros em piramide
                 String espacos = repetidor_String("_", numero - i);
@@ -144,7 +146,7 @@ public class Lista_de_Exercicio{
 
     public static String repetidor_String(String caractere, int tempo){
         StringBuilder resultado = new StringBuilder();
-        for (int i2 = 0; i2 < 5; i2++){
+        for (int i2 = 0; i2 < tempo; i2++){
             resultado.append(caractere);
         }
         return resultado.toString();
@@ -167,6 +169,51 @@ public class Lista_de_Exercicio{
     /*O método ToString() tem o objetivo de trazer uma representação textual de uma instância de um objeto. Essa representação textual de um objeto vem a ser muito útil principalmente em situações de debugging e de logging. */
 
     //Primos perfeitos
+
+    public static void Primos_Perfeitos(int x){
+
+        int aux, aux2;
+
+        if(x >= 2){
+            if( x == Numero_primo(true) && Numero_perfeito(true)){
+        
+            System.out.printf("%d é um número primo perfeito\n", x);
+            System.out.printf("É resultado da soma dos números:\n %d\n %d\n", aux, aux2);
+            }
+            else{
+                System.out.printf("%d não é um número primo\n", x);
+            }
+        }
+    }
+
+    public static boolean Numero_perfeito(int x){
+        
+        int totalPerfeitos=0;
+        for(int i = 1; i <= x; i++){ //Sistema de repetição
+            if(Eh_numero_perfeito(i)){ //Para cada "i" chamado, vai ser verificado se "i" é um número perfeito
+                System.out.printf("%d\n", i);
+                totalPerfeitos++; //Se "i" for um número perfeito, a variável "totalPerfeitos" vai receber + 1
+                return true;
+            }
+        }
+    }
+
+    public static int Numero_primo(int x){
+
+        int aux, aux2, primo=0;
+    
+    for(int i = 1; i <= x; i++){ //Sistema de repetição: "i" = "1" (menor valor), se "i" <= "x", "i" recebe + 1
+        aux2=1; //Aux2 é a variável que vai receber o número de divisores de "i"
+        for(int i2=2; i2<=i/2; i2++){
+            //Sistema de repetição: "i2" = 2, pois um número primo é divisivel por 1 e ele mesmo, se "i2" <= i/2, (i/2 é para não verificar divisores maiores do que a metade de "i"), "i2" recebe + 1
+            if(i%i2==0){
+                aux2++; 
+            }
+        }
+        if(aux2==1){
+            primo++;
+        }
+    }
 
     public static void main (String [] args){
 
