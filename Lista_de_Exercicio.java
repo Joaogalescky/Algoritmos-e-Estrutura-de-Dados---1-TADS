@@ -48,7 +48,7 @@ public class Lista_de_Exercicio{
    
     public static void Ordenados(){
 
-        int n, valor_atual, valor_anterior, valor_memoria=0;
+        int n, valor_atual, valor_anterior;
         boolean crescente=false, decrescente=false, igual=false, desordenado=false; //O código vai funcionar por meio de condições
 
         Scanner entrada = new Scanner (System.in);
@@ -74,6 +74,7 @@ public class Lista_de_Exercicio{
                 }
                 valor_anterior = valor_atual; //A variável anterior vai assumir o valor da atual a cada fim de comparação na repeticação
             }
+            entrada.close();
             if(igual && !crescente && !decrescente){ //Para serem iguais,  não pode ter ativo a condição de crescente ou decrescente
                 System.out.println("Os valores são iguais");
             }
@@ -85,7 +86,7 @@ public class Lista_de_Exercicio{
             }
             else if(desordenado){ //Para ser desordenado, pode ter ativo qualquer condição de crescente e crescente ou igual
                 System.out.println("Os valores estão desordenados numericamente");
-            } 
+            }
         }
     }
 
@@ -129,40 +130,40 @@ public class Lista_de_Exercicio{
     //Piramide
 
     public static void Piramide(int numero){
- 
-         if(numero>=1){
-             for(int repetidor=1; repetidor <= numero; repetidor++){
-                 String espacos = repetidor_String("_", numero - repetidor);
-                 String numeros = gerador_Numbers(repetidor);
-                 System.out.printf("+ %s_%s_%s +\n", espacos, numeros, espacos);
-             }
-         }
-     }
 
-    public static String repetidor_String(String palavra, int tempo){
+        if(numero>=1){
+                String linha = repetidor_String("_", numero); //Para imprimir a primeira linha
+                System.out.printf("+ %s_%s +\n", linha, linha);
+            for(int i = 1; i <= numero; i++){ //Para imprimir a ordem dos numeros em piramide
+                String espacos = repetidor_String("_", numero - i);
+                String numeros = gerador_Numeros(i);
+                System.out.printf("+ %s_%s_%s +\n", espacos, numeros, espacos);
+            }
+        }
+    }
+
+    public static String repetidor_String(String caractere, int tempo){
         StringBuilder resultado = new StringBuilder();
-        for (int repetidor2 = 0; repetidor2<tempo; repetidor2++){
-            resultado.append(palavra);
+        for (int i2 = 0; i2 < 5; i2++){
+            resultado.append(caractere);
         }
         return resultado.toString();
     }
 
-    public static String gerador_Numbers(int x){
+    public static String gerador_Numeros(int x){
         StringBuilder resultado2 = new StringBuilder();
-        for (int repetidor3 = 1; repetidor3 <= x; repetidor3++){
-            resultado2.append(repetidor3);
-            if(repetidor3 < x){
-                resultado2.append(" ");
+        for (int i3 = 1; i3 <= x; i3++){ //Começa com 1 e recebe 1+ até chegar ao numero digitado
+            resultado2.append(i3);
+            if(i3 < x){ //Se for menor que "X", o valor digitado
+                resultado2.append(" "); //Vai inserir um "espaço"
             }
         }
         return resultado2.toString();
     }
 
     /*O método append() da Interface FormData adiciona um novo valor dentro de uma chave existente dentro do objeto FormData ou adiciona a chave caso ainda não exista.*/
-
     /*StringBuilder pode ser usada quando você deseja modificar uma cadeia de caracteres sem criar um novo objeto.
     Por exemplo, o uso da classe StringBuilder pode melhorar o desempenho ao concatenar várias cadeias de caracteres em um loop.*/
-
     /*O método ToString() tem o objetivo de trazer uma representação textual de uma instância de um objeto. Essa representação textual de um objeto vem a ser muito útil principalmente em situações de debugging e de logging. */
 
     //Primos perfeitos
@@ -186,7 +187,7 @@ public class Lista_de_Exercicio{
         //Perfeito(x, y);
 
         //**Piramide**
-        //Piramide(x);
+        Piramide(x);
 
         //**Primos perfeitos**
     }
