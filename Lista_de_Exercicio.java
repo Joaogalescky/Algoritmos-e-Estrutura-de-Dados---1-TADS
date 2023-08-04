@@ -186,16 +186,21 @@ public class Lista_de_Exercicio{
         }
     }
 
-    public static boolean Numero_perfeito(int x){
+    private static int Numero_primo(boolean b) {
+        return 0;
+    }
+
+    public static boolean Numero_perfeito(boolean b){
         
         int totalPerfeitos=0;
-        for(int i = 1; i <= x; i++){ //Sistema de repetição
+        for(int i = 1; i <= b; i++){ //Sistema de repetição
             if(Eh_numero_perfeito(i)){ //Para cada "i" chamado, vai ser verificado se "i" é um número perfeito
                 System.out.printf("%d\n", i);
                 totalPerfeitos++; //Se "i" for um número perfeito, a variável "totalPerfeitos" vai receber + 1
                 return true;
             }
         }
+        return false;
     }
 
     public static int Numero_primo(int x){
@@ -234,7 +239,7 @@ public class Lista_de_Exercicio{
         //Perfeito(x, y);
 
         //**Piramide**
-        Piramide(x);
+        //Piramide(x);
 
         //**Primos perfeitos**
     }
