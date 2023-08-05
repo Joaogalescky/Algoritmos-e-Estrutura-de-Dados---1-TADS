@@ -100,22 +100,29 @@ public class prova_do_darlon{
     */
 
     /*
-        public static void encontrarNumerosPerfeitos(int ini, int fim) {
-            for (int i = ini; i <= fim; i++) {
-                if (ehNumeroPerfeito(i)) {
+        public static void linha(){
+            System.out.println("----------------------------");
+        }
+
+        public static void encontrarNumerosPerfeitos(int x, int y) {
+
+            for (int i = x; i <= y; i++) {
+                if (eh_Perfeito(i)) {
                     System.out.println(i);
                 }
             }
         }
     
-        public static boolean ehNumeroPerfeito(int num) {
+        public static boolean eh_Perfeito(int i_rep) {
+
             int soma = 0;
-            for (int j = 1; j < num; j++) {
-                if (num % j == 0) {
-                    soma += j;
+
+            for (int i2 = 1; i2 < i_rep; i2++) {
+                if (i_rep % i2 == 0) {
+                    soma = soma + i2;
                 }
             }
-            return soma == num;
+            return soma == i2;
         }
     */
 
@@ -154,14 +161,18 @@ public class prova_do_darlon{
 
         //5°
         /*
-            int ini, fim;
+            int x, y;
             Scanner entrada = new Scanner(System.in);
+            linha();
             System.out.println("Informe o intervalo a ser testado: ");
-            ini = entrada.nextInt();
-            fim = entrada.nextInt();
+            linha();
+
+            x = entrada.nextInt();
+            y = entrada.nextInt();
             entrada.close();
             
-            encontrarNumerosPerfeitos(ini, fim);
+            encontrarNumerosPerfeitos(x, y);
+            linha();
         */
   
     }

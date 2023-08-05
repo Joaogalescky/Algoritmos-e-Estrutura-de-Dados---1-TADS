@@ -170,56 +170,7 @@ public class Lista_de_Exercicio{
 
     //Primos perfeitos
 
-    public static void Primos_Perfeitos(int x){
-
-        int aux, aux2;
-
-        if(x >= 2){
-            if( x == Numero_primo(true) && Numero_perfeito(true)){
-        
-            System.out.printf("%d é um número primo perfeito\n", x);
-            System.out.printf("É resultado da soma dos números:\n %d\n %d\n", aux, aux2);
-            }
-            else{
-                System.out.printf("%d não é um número primo\n", x);
-            }
-        }
-    }
-
-    private static int Numero_primo(boolean b) {
-        return 0;
-    }
-
-    public static boolean Numero_perfeito(boolean b){
-        
-        int totalPerfeitos=0;
-        for(int i = 1; i <= b; i++){ //Sistema de repetição
-            if(Eh_numero_perfeito(i)){ //Para cada "i" chamado, vai ser verificado se "i" é um número perfeito
-                System.out.printf("%d\n", i);
-                totalPerfeitos++; //Se "i" for um número perfeito, a variável "totalPerfeitos" vai receber + 1
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static int Numero_primo(int x){
-
-        int aux, aux2, primo=0;
     
-    for(int i = 1; i <= x; i++){ //Sistema de repetição: "i" = "1" (menor valor), se "i" <= "x", "i" recebe + 1
-        aux2=1; //Aux2 é a variável que vai receber o número de divisores de "i"
-        for(int i2=2; i2<=i/2; i2++){
-            //Sistema de repetição: "i2" = 2, pois um número primo é divisivel por 1 e ele mesmo, se "i2" <= i/2, (i/2 é para não verificar divisores maiores do que a metade de "i"), "i2" recebe + 1
-            if(i%i2==0){
-                aux2++; 
-            }
-        }
-        if(aux2==1){
-            primo++;
-        }
-    }
-
     public static void main (String [] args){
 
         int x, y;
