@@ -30,33 +30,34 @@ public class exercicio{
     */
 
     public static void potN(int x, int n){
-        
-        x = 16;
-        n = 2;
-                    
-        if potN(x, n){
-            System.out.println(x + " é uma potência de " + n);
+            
+        if(eh_potN(x, n)){
+            System.out.printf("%d é uma potência de %d", x, n);
             }else{
-                System.out.println(x + " não é uma potência de " + n);
+                System.out.printf("%d não é uma potência de %d", x, n);
             }
         }
                 
-        public static boolean potN(int x, int n){
-            if (x == 1){
+        public static boolean eh_potN(int x, int n){
+            
+            int resultado;
+            
+            if(x == 1){
                 return true;  // Qualquer número elevado a 0 é igual a 1.
             }
                     
-            for (int i = 1; i <= x; i++){
-                int result = (int) Math.pow(n, i);
+            for (int i = 1; i <= x; i++){ //Sistema de repetição
+                resultado = (int) Math.pow(n, i);
+                //A variável "resultado" vai calcular a base "n" com o expoente "i" e guardar o resultado para comparação até "i" ser maior ou igual a "x" no sistema de repetição.
                         
-                if (result == x){
+                if(resultado == x){ //Se o resultado da potência for igual a "x", retorne true.
                     return true;
-                }else if (result > x){
-                    break;  // Se o resultado da potência exceder x, não é uma potência de n.
+                }else if(resultado > x){
+                    break;  // Se o resultado da potência exceder "x", retorne false.
                 }
             }  
-        return false;
-    }
+            return false;
+        }
 
     //public static void distanciaCartesiana(int x, int y) {
 
