@@ -30,7 +30,12 @@ public class exercicio{
     */
 
     public static void potN(int x, int n){
-            
+
+    /*Potência- propriedades
+    potência: 5² = 25
+    5 = base; ² = expoente; 25 = potência
+    */    
+
         if(eh_potN(x, n)){
             System.out.printf("%d é uma potência de %d", x, n);
             }else{
@@ -42,14 +47,14 @@ public class exercicio{
             
             int resultado;
             
-            if(x == 1){
-                return true;  // Qualquer número elevado a 0 é igual a 1.
+            if(x == 1){ //Qualquer número expoente de 1 é igual a 1.
+                return true;  
             }
                     
             for (int i = 1; i <= x; i++){ //Sistema de repetição
                 resultado = (int) Math.pow(n, i);
                 //A variável "resultado" vai calcular a base "n" com o expoente "i" e guardar o resultado para comparação até "i" ser maior ou igual a "x" no sistema de repetição.
-                        
+                
                 if(resultado == x){ //Se o resultado da potência for igual a "x", retorne true.
                     return true;
                 }else if(resultado > x){
