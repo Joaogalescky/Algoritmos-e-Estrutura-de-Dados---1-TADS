@@ -66,9 +66,7 @@ public class exercicio{
             return false;
     }*/
 
-    /*public static void distanciaCartesiana(int x, int y) {
-
-        public static void cartesiano(String[] args) {
+    public static void distanciaCartesiana() {
 
             double distancia, x1, y1, x2, y2;
             Scanner entrada = new Scanner (System.in);
@@ -78,33 +76,33 @@ public class exercicio{
             x2 = entrada.nextDouble();
             y2 = entrada.nextDouble();
 
-            distancia = distanciaCartesiana(x1, y1, x2, y2);
-            System.out.printf("Distância entre os pontos: %d\n", distancia);
-        }
-        
-        public static double distanciaCartesiana(double x1, double y1, double x2, double y2) {
+        distancia = calculo_cartesiano(x1, y1, x2, y2);
+        System.out.printf("Distância entre os pontos: %d\n", distancia);
+    }
 
-            double deltaX, deltaY, distancia;
+    public static double calculo_cartesiano(double x1, double y1, double x2, double y2) {
 
-            deltaX = x2 - x1;
-            deltaY = y2 - y1;
-            distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-            
-            return distancia;
-        }
-    }*/
+        double ponto_X, ponto_Y, distancia;
 
+        ponto_X = x2 - x1;
+        ponto_Y = y2 - y1;
+
+        distancia = Math.sqrt(ponto_X * ponto_Y + ponto_Y * ponto_Y);
+
+        return distancia;
+    }
 
     public static void main(String[] args) {
         
-        int x, y, x1, y1, x2, y2;
+        int x, y;
 
-        Scanner entrada = new Scanner (System.in);
-        x = entrada.nextInt();
-        y = entrada.nextInt();
-        entrada.close();
+        //Scanner entrada = new Scanner (System.in);
+        //x = entrada.nextInt();
+        //y = entrada.nextInt();
+        //entrada.close();
 
         //eh_pot2(x);
         //eh_potN(x, y);
+        distanciaCartesiana();
     }
 }
