@@ -11,13 +11,14 @@ public class exercicio{
     */
 
     /*public static boolean pot2(int x){
+        //https://www.w3schools.com/go/go_bitwise_operators.php
 
         if(x <= 0){ //"x" não pode ser menor ou igual a 0
             return false; //retorne false
         }
-        return (x & (x - 1)) == 0; //Operação bitwise AND (&) == (Verificador de potências de 2) 
+        return (x & (x - 1)) == 0; //Operação bitwise AND (&) --> (Verificador de potências de 2) 
 
-        //A ideia aqui é que as potências de 2 têm apenas um bit 1 em sua representação binária, enquanto num - 1 terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre num e num - 1 resulta em zero somente para números que são potências de 2. Isso ocorre porque o único bit 1 em num é cancelado pela operação AND com os bits 1 em num - 1, deixando todos os bits como zero.
+        //As potências de 2 têm apenas um bit 1 em sua representação binária, enquanto "x - 1" terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre "x e x - 1" resulta em zero somente para números que são potências de 2. Ocorre pois o único bit 1 em "x" é cancelado pela operação AND com os bits 1 em "x - 1", deixando todos os bits como zero.
 
     } // retorne true
 
