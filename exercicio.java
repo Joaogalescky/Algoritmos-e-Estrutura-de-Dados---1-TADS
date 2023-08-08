@@ -84,9 +84,12 @@ public class exercicio{
         
         public static double distanciaCartesiana(double x1, double y1, double x2, double y2) {
 
-            double deltaX = x2 - x1;
-            double deltaY = y2 - y1;
-            double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            double deltaX, deltaY, distancia;
+
+            deltaX = x2 - x1;
+            deltaY = y2 - y1;
+            distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            
             return distancia;
         }
     }*/
