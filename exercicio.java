@@ -10,31 +10,33 @@ public class exercicio{
         15. Implemente uma função chamada distanciaCartesiana que recebe dois pares de números, que correspondem a pontos em um plano cartesiano com coordenadas x, y. A função deve retornar a distância entre esses dois pontos. Não é necessário arredondar valores.
     */
 
-    //public static boolean pot2(int x){
+    /*public static boolean pot2(int x){
 
-    /*
-            if(x <= 0){ //"x" não pode ser menor ou igual a 0
-                return false; //retorne false
-            }
-            return (x & (x - 1)) == 0; //O "&" vai fazer a validação do retorno
-        } // retorne true
-
-        public static void eh_pot2(int x){
-
-            if(pot2(x)){
-                System.out.printf("%d é uma potência de 2.\n", x);
-            }else{
-                System.out.printf("%d não é uma potência de 2.\n", x);
-            }
+        if(x <= 0){ //"x" não pode ser menor ou igual a 0
+            return false; //retorne false
         }
-    */
+        return (x & (x - 1)) == 0; //Operação bitwise AND (Verificador de potências de 2)
+        //Ou 
 
-    public static void potN(int x, int n){
+        //A ideia aqui é que as potências de 2 têm apenas um bit 1 em sua representação binária, enquanto num - 1 terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre num e num - 1 resulta em zero somente para números que são potências de 2. Isso ocorre porque o único bit 1 em num é cancelado pela operação AND com os bits 1 em num - 1, deixando todos os bits como zero.
 
-    /*Potência- propriedades
-    potência: 5² = 25
-    5 = base; ² = expoente; 25 = potência
-    */    
+    } // retorne true
+
+    public static void eh_pot2(int x){
+
+        if(pot2(x)){
+            System.out.printf("%d é uma potência de 2.\n", x);
+        }else{
+            System.out.printf("%d não é uma potência de 2.\n", x);
+        }
+    }*/
+
+    /*public static void potN(int x, int n){
+
+    //Potência- propriedades
+    //potência: 5² = 25
+    //5 = base; ² = expoente; 25 = potência
+       
 
         if(eh_potN(x, n)){
             System.out.printf("%d é uma potência de %d", x, n);
@@ -62,29 +64,28 @@ public class exercicio{
                 }
             }  
             return false;
-        }
+    }*/
 
-    //public static void distanciaCartesiana(int x, int y) {
+    /*public static void distanciaCartesiana(int x, int y) {
 
-    /*
-            public static void main(String[] args) {
-                double x1 = 1.0;
-                double y1 = 2.0;
-                double x2 = 4.0;
-                double y2 = 6.0;
+        public static void main(String[] args) {
+            double x1 = 1.0;
+            double y1 = 2.0;
+            double x2 = 4.0;
+            double y2 = 6.0;
                 
-                double distancia = distanciaCartesiana(x1, y1, x2, y2);
-                System.out.println("Distância entre os pontos: " + distancia);
-            }
-        
-            public static double distanciaCartesiana(double x1, double y1, double x2, double y2) {
-                double deltaX = x2 - x1;
-                double deltaY = y2 - y1;
-                double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                return distancia;
-            }
+            double distancia = distanciaCartesiana(x1, y1, x2, y2);
+            System.out.println("Distância entre os pontos: " + distancia);
         }
-    */
+        
+        public static double distanciaCartesiana(double x1, double y1, double x2, double y2) {
+            double deltaX = x2 - x1;
+            double deltaY = y2 - y1;
+            double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            return distancia;
+        }
+    }*/
+
 
     public static void main(String[] args) {
         
@@ -92,9 +93,10 @@ public class exercicio{
 
         Scanner entrada = new Scanner (System.in);
         x = entrada.nextInt();
-        //y = entrada.nextInt();
+        y = entrada.nextInt();
         entrada.close();
 
         //eh_pot2(x);
+        //eh_potN(x, y);
     }
 }
