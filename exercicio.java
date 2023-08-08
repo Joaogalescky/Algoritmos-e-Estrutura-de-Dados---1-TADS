@@ -70,13 +70,14 @@ public class exercicio{
 
         public static void cartesiano(String[] args) {
 
-            double distancia;
-            double x1, y1, x2, y2;
+            double distancia, x1, y1, x2, y2;
             Scanner entrada = new Scanner (System.in);
 
             x1 = entrada.nextDouble();
+            y1 = entrada.nextDouble();
+            x2 = entrada.nextDouble();
+            y2 = entrada.nextDouble();
 
-                
             distancia = distanciaCartesiana(x1, y1, x2, y2);
             System.out.printf("Distância entre os pontos: %d\n", distancia);
         }
