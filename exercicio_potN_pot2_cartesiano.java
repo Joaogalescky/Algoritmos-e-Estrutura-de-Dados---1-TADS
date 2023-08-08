@@ -16,11 +16,17 @@ public class exercicio_potN_pot2_cartesiano{
         if(x <= 0){ //"x" não pode ser menor ou igual a 0
             return false;
         }
-        return (x & (x - 1)) == 0; //Operação bitwise AND (&) --> (Verificador de potências de 2) 
+        //return (x & (x - 1)) == 0; //Operação bitwise AND (&) --> (Verificador de potências de 2) 
 
         //As potências de 2 têm apenas um bit 1 em sua representação binária, enquanto "x - 1" terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre "x e x - 1" resulta em zero somente para números que são potências de 2. Ocorre pois o único bit 1 em "x" é cancelado pela operação AND com os bits 1 em "x - 1", deixando todos os bits como zero.
 
         //Tentar aplicar a mesma ideia do potN para pot2
+        for (int i = 1; i <= x; i++){ //Sistema de repetição
+            if(x%2==0){
+            };
+            return true;
+        }  
+        return false;
     }
 
     public static void eh_pot2(int x){
@@ -84,10 +90,13 @@ public class exercicio_potN_pot2_cartesiano{
 
         double ponto_X, ponto_Y, distancia;
 
-        ponto_X = x2 - x1;
+        ponto_X = x2 - x1; //Os pontos de "X" e "Y" são iguais a diferença dos dois pontos "x1 e x2" e "y1 e y2"
         ponto_Y = y2 - y1;
 
         distancia = Math.sqrt(ponto_X * ponto_Y + ponto_Y * ponto_Y);
+        //ou
+        //distancia = Math.sqrt(x2 - x1) + Math.sqrt(y2 - y1);
+        //Teorema de pitágoras --> dAB² = (xB - xA)² + (yB - yA)².
 
         return distancia;
     }
