@@ -68,17 +68,21 @@ public class exercicio{
 
     /*public static void distanciaCartesiana(int x, int y) {
 
-        public static void main(String[] args) {
-            double x1 = 1.0;
-            double y1 = 2.0;
-            double x2 = 4.0;
-            double y2 = 6.0;
+        public static void cartesiano(String[] args) {
+
+            double distancia;
+            double x1, y1, x2, y2;
+            Scanner entrada = new Scanner (System.in);
+
+            x1 = entrada.nextDouble();
+
                 
-            double distancia = distanciaCartesiana(x1, y1, x2, y2);
-            System.out.println("Distância entre os pontos: " + distancia);
+            distancia = distanciaCartesiana(x1, y1, x2, y2);
+            System.out.printf("Distância entre os pontos: %d\n", distancia);
         }
         
         public static double distanciaCartesiana(double x1, double y1, double x2, double y2) {
+
             double deltaX = x2 - x1;
             double deltaY = y2 - y1;
             double distancia = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
@@ -89,7 +93,7 @@ public class exercicio{
 
     public static void main(String[] args) {
         
-        int x, y;
+        int x, y, x1, y1, x2, y2;
 
         Scanner entrada = new Scanner (System.in);
         x = entrada.nextInt();
