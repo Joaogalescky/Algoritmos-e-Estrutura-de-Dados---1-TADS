@@ -23,6 +23,9 @@ public class exercicio_potN_pot2_cartesiano{
         //Tentar aplicar a mesma ideia do potN para pot2
         for (int i = 1; i <= x; i++){ //Sistema de repetição
             if(x%2==0){
+                while(x>0){
+                    int aux = x % 2;
+                }
             };
             return true;
         }  
