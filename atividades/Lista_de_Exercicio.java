@@ -1,3 +1,5 @@
+package atividades;
+
 // Algoritmos e Estruturas de Dados
 // Trabalho 2º Bimestre
 

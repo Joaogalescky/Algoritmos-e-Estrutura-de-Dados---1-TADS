@@ -1,7 +1,7 @@
 package vetores_vetor;
 import java.util.Scanner;
 
-class Vetores{
+class Vetores_1aula{
 
     /*Variáveis Compostas
      * 

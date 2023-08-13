@@ -1,7 +1,7 @@
 package vetores_vetor;
 import java.util.Scanner;
 
-public class vetores_atv{
+public class Vetores_atv{
 
     public static void exercicio2(){
         int [] vetorA = {0,0,0,0,0,0,0,0,0,0};

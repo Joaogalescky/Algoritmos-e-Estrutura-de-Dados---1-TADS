@@ -2,7 +2,7 @@ package vetores_vetor;
 
 import java.util.Scanner;
 
-public class atv_08_08_2023{
+public class Vetores_beecrowd{
 
     public static void beecrowd_1174() {
 
@@ -65,29 +65,38 @@ public class atv_08_08_2023{
 
         //Vetor = Vetor posicao [0] Vetor posicao [1] ...[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
 
-        int x, y, aux, t = 10;
-        int [] N;
-
-        Scanner entrada = new Scanner (System.in);
-        N = new int [t];
-
-        for(int i = 0; i < N.length; i++){
-            N[i] = entrada.nextInt();
-        }
-        while(x < y){
-            aux = N[x];
-            N[x] = N[y];
-            N[y] = aux;
-            x = x + 1;
-            y = y - 1;
-        }
-    //     System.out.printf("N[%d] = %d\n", i, N[] );
-
-        
     // }
+
+    public static void beecrowd_1177() {
+
+        //beecrowd 1177 - Preenchimento de Vetor I
+        /*Faça um programa que leia um valor T e preencha um vetor N[1000] com a sequência de valores de 0 até T-1 repetidas vezes, conforme exemplo abaixo. Imprima o vetor N. */
+    
+        //variáveis
+        int T;
+        int[] N;
+        
+        //entrada
+        Scanner entrada = new Scanner (System.in);
+        T = entrada.nextInt();
+        N = new int [1000]; //Vetor vai ter memória para 1000 valores
+                    
+        //processamento
+        if(T >= 2 && T <= 50){ //If de enquadramento das condições
+            for(int i = 0; i < 1000; i ++){ //Sistema de repetição
+                N[i] = i % T; //Calculo para preencher o vetor "N" com a sequência de 0 até T-1
+            }
+            for(int i = 0; i < 1000; i ++){  //Sistema de repetição para imprimir "N"
+                System.out.printf("N[%d] = %d\n", i, N[i]);
+            }
+        } else{
+            System.out.println("Operação inválida, tente com um entrada entre 2 e 50\n");
+        }
+    }
     
     public static void main(String[] args) {
         //beecrowd_1174();
         //beecrowd_1180();
+        beecrowd_1177();
     }
 }
