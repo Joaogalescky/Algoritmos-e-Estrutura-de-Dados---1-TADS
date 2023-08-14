@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Vetores_beecrowd{
 
+    /*Arquivo de atividades do beecrowd sobre Vetores*/
+
     public static void beecrowd_1174() {
 
         //beecrowd 1174 - Seleção em Vetor I
@@ -93,10 +95,41 @@ public class Vetores_beecrowd{
             System.out.println("Operação inválida, tente com um entrada entre 2 e 50\n");
         }
     }
+
+    public static void beecrowd_1175(){
+
+        //beecrowd_1175 - Troca em Vetor I.
+        /*Faça um programa que leia um vetor N[20]. Troque a seguir, o primeiro elemento com o último, o segundo elemento com o penúltimo, etc., até trocar o 10º com o 11º. Mostre o vetor modificado. */
+
+        //variáveis.
+        int[] N = new int [20];
+        int aux;
+        
+        //entrada.
+        Scanner entrada = new Scanner (System.in);
+        
+        //processamento.
+        //System.out.println("Digite 20 valores para o vetor 'N'\n");
+        for(int i = 0; i < N.length; i ++){ //Sistema de repetição para entrada dos valores do vetor (Pode sere 'N.length' ou '20').
+            N[i] = entrada.nextInt();
+        }
+        //Trocar as posições dos 10 primeiros valores pelos 10 últimos.
+        for(int i = 0; i < 10; i++){ //Sistema de repetição para troca das posições dos ultimos valores para os primeiros valores.
+            aux = N[i]; //armz valor do elemento atual.
+            N[i] = N[19 - i]; //trocando o valor atual pelo ultimo valor.
+            N[19 - i] = aux; //armz ultimo valor do elemento na posicao atual.
+            //Por quê 19? Pois os 20 valores na memória começam de 0 a 19.
+        }
+        entrada.close();
+
+        for(int i = 0; i < 20; i ++){ //Sistema de repetição para saída do resultado.
+            System.out.printf("N[%d] = %d\n", i, N[i]);
+        }
     
     public static void main(String[] args) {
         //beecrowd_1174();
         //beecrowd_1180();
-        beecrowd_1177();
+        //beecrowd_1177();
+        //beecrowd_1175();
     }
 }
