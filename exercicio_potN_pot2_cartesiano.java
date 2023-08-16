@@ -24,7 +24,7 @@ public class exercicio_potN_pot2_cartesiano{
 
         for (int i = 1; i <= x; i++){ //Sistema de repetição
             //Multiplicação de "y" por potencia de 2, se for igual a "x", é potencia, senão, não é
-            aux = Math.pow(aux, 2);
+            aux = (int) Math.pow(aux, 2);
             if(aux == x)
             return true;
         }
