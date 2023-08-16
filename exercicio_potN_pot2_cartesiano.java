@@ -13,6 +13,8 @@ public class exercicio_potN_pot2_cartesiano{
     public static boolean pot2(int x){
         //https://www.w3schools.com/go/go_bitwise_operators.php
 
+        int aux = 1;
+
         if(x <= 0){ //"x" não pode ser menor ou igual a 0
             return false;
         }
@@ -20,15 +22,12 @@ public class exercicio_potN_pot2_cartesiano{
 
         //As potências de 2 têm apenas um bit 1 em sua representação binária, enquanto "x - 1" terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre "x e x - 1" resulta em zero somente para números que são potências de 2. Ocorre pois o único bit 1 em "x" é cancelado pela operação AND com os bits 1 em "x - 1", deixando todos os bits como zero.
 
-        //Tentar aplicar a mesma ideia do potN para pot2
         for (int i = 1; i <= x; i++){ //Sistema de repetição
-            if(x%2==0){
-                while(x>0){
-                    int aux = x % 2;
-                }
-            };
+            //Multiplicação de "y" por potencia de 2, se for igual a "x", é potencia, senão, não é
+            aux = Math.pow(aux, 2);
+            if(aux == x)
             return true;
-        }  
+        }
         return false;
     }
 
