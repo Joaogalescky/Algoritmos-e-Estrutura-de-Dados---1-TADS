@@ -50,7 +50,7 @@ class atv_vetor_matriz_14082023{
         }
     }
 
-    public static void atv_2EAD() {
+    public static void atv_7EAD() {
         
         /*Leia uma matriz 4x4. Em seguida, mostre a quantidade de valores menores que 10 existentes na matriz.*/
 
