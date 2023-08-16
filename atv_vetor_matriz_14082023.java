@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 class atv_vetor_matriz_14082023{
 
-    public static void atv_1EX(){
+    public static void atv_EX(){
 
         //variáveis e entrada
         int[][] matriz = {
@@ -22,7 +22,7 @@ class atv_vetor_matriz_14082023{
         }
     }
 
-    public static void atv_2EX(){
+    public static void atv_1EAD(){
 
         //variáveis
         int[][] matriz;
@@ -50,7 +50,7 @@ class atv_vetor_matriz_14082023{
         }
     }
 
-    public static void atv_1EAD() {
+    public static void atv_2EAD() {
         
         /*Leia uma matriz 4x4. Em seguida, mostre a quantidade de valores menores que 10 existentes na matriz.*/
 
@@ -80,7 +80,8 @@ class atv_vetor_matriz_14082023{
     }
 
     public static void main(String[] args) {
-        //atv_1EX();
-        //atv_2EX();
+        //atv_EX();
+        //atv_1EAD();
+        //atv_2EAD();
     }
 }
