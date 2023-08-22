@@ -23,18 +23,17 @@ public class exercicio_potN_pot2_cartesiano{
         //https://www.w3schools.com/go/go_bitwise_operators.php
 
         while(aux < x){
-            aux = aux * 2;
-            System.out.printf("--> aux = %d\n", aux);
-
+            aux = aux * 2; //Aux^aux*2
             if(aux == x){
                 return true;
             }
         }
+        System.out.printf("%d <-> %d\n", x, aux);
         return false;
     }
 
     public static void eh_pot2(int x){
-
+        
         if(pot2(x)){
             System.out.printf("%d é uma potência de 2.\n", x);
         }else{
