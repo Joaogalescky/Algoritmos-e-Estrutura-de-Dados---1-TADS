@@ -27,7 +27,7 @@ class atv_vetor_matriz_16082023{
         int i, j;
         for(i = 0; i < matriz.length; i ++){
             for(j = 0; j < matriz[0].length; j++){
-                System.out.printf("%d ", matriz[i][j]);
+                System.out.printf("%s ", matriz[i][j]);
             }
         }
     }

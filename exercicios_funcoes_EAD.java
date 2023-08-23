@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class exercicio_potN_pot2_cartesiano{
+public class exercicios_funcoes_EAD{
 
     /*Exercicios
         13. Faça uma função chamada pot2 que retorna verdadeiro caso o parâmetro passado seja uma potência de 2.
@@ -9,6 +9,10 @@ public class exercicio_potN_pot2_cartesiano{
 
         15. Implemente uma função chamada distanciaCartesiana que recebe dois pares de números, que correspondem a pontos em um plano cartesiano com coordenadas x, y. A função deve retornar a distância entre esses dois pontos. Não é necessário arredondar valores.
     */
+
+    public static void linha() {
+        System.out.println("-------------------");
+    }
 
     public static boolean pot2(int x){
 
@@ -104,17 +108,73 @@ public class exercicio_potN_pot2_cartesiano{
         return distancia;
     }
 
+    public static int fatorial(int z) {
+        if (z == 0 || z == 1){
+            return 1;
+        } else{
+            return z * fatorial(z - 1);
+        }
+    }
+
+    public static void combinacao() {
+        //8. Desenvolva uma função que calcula o número de combinações simples "C" de "n" elementos tomados "p" a "p".
+
+        /* Explicação
+            A combinação simples é um tipo de agrupamento de análise combinátoria. Esta consiste em todas as variações possíveis de elementos de dado conjunto, desde que a ordem não seja importante.
+
+            Para calcular o número de combinações simples "C" de "n" elementos tomados "p" a "p" utilizamos a seguinte equação:
+
+            C^n^p = n!/p!(n-p)!
+
+            Exemplo:
+
+            • Combinação de 10 elementos tomados de 4 a 4:
+
+            C^10^4 = 10!/4!(10 - 4)! = 10x9x8x7x6!/4x3x2x1x6! = 10x9x8x7/4x3x2x1 = 5040/24 = 210
+        */
+
+        //variaveis
+        int x, fat_x; 
+        int y, fat_y;
+        int Combinacao, fat_menos;
+
+        //entrada
+        Scanner entrada = new Scanner (System.in);
+        x = entrada.nextInt();
+        y = entrada.nextInt();
+        entrada.close();
+
+        //processamento
+        fat_x = fatorial(x);
+        fat_y = fatorial(y);
+        fat_menos = fatorial(x - y);
+
+        Combinacao = fat_x / (fat_y * fat_menos);
+
+        //saida
+        System.out.printf("%d! = %d\n", x, fat_x);
+        System.out.printf("%d! = %d\n", y, fat_y);
+        System.out.printf("(%d - %d)! = %d\n", x, y, fat_menos);
+        System.out.printf("%d + %d = %d\n", x, y, Combinacao);
+        linha();
+        System.out.printf("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao);
+    }
+
+
+
+
     public static void main(String[] args) {
         
         int x, y;
 
-        Scanner entrada = new Scanner (System.in);
-        x = entrada.nextInt();
+        //Scanner entrada = new Scanner (System.in);
+        //x = entrada.nextInt();
         //y = entrada.nextInt();
-        entrada.close();
+        //entrada.close();
 
-        eh_pot2(x);
+        //eh_pot2(x);
         //eh_potN(x, y);
         //distanciaCartesiana();
+        combinacao();
     }
 }
