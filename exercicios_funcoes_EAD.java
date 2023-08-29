@@ -16,12 +16,14 @@ public class exercicios_funcoes_EAD{
 
     public static boolean pot2(int x){
 
-
+        //variaveis
         int aux = 1;
 
+        //processamento e saida
         if(x <= 0){ //"x" não pode ser menor ou igual a 0
             return false;
         }
+    
         //return (x & (x - 1)) == 0; //Operação bitwise AND (&) --> (Verificador de potências de 2) 
         //As potências de 2 têm apenas um bit 1 em sua representação binária, enquanto "x - 1" terá todos os bits à direita do bit 1 igual a 1. Fazer uma operação bitwise AND entre "x e x - 1" resulta em zero somente para números que são potências de 2. Ocorre pois o único bit 1 em "x" é cancelado pela operação AND com os bits 1 em "x - 1", deixando todos os bits como zero.
         //https://www.w3schools.com/go/go_bitwise_operators.php
@@ -38,6 +40,7 @@ public class exercicios_funcoes_EAD{
 
     public static void eh_pot2(int x){
         
+        //processamento
         if(pot2(x)){
             System.out.printf("%d é uma potência de 2.\n", x);
         }else{
@@ -51,49 +54,56 @@ public class exercicios_funcoes_EAD{
         //potência: 5² = 25
         //5 = base; ² = expoente; 25 = potência
 
+        //saida
         if(eh_potN(x, n)){
             System.out.printf("%d é uma potência de %d", x, n);
-            }else{
-                System.out.printf("%d não é uma potência de %d", x, n);
-            }
+        }else{
+            System.out.printf("%d não é uma potência de %d", x, n);
+        }
+    }
+                
+    public static boolean eh_potN(int x, int n){
+        
+        //variaveis
+        int resultado;
+        
+        //processamento e saida
+        if(x == 1){ //Qualquer número expoente de 1 é igual a 1.
+            return true;  
         }
                 
-        public static boolean eh_potN(int x, int n){
+        for (int i = 1; i <= x; i++){ //Sistema de repetição
+            resultado = (int) Math.pow(n, i);
+            //A variável "resultado" vai calcular a base "n" com o expoente "i" e guardar o resultado para comparação até "i" ser maior ou igual a "x" no sistema de repetição.
             
-            int resultado;
-            
-            if(x == 1){ //Qualquer número expoente de 1 é igual a 1.
-                return true;  
+            if(resultado == x){ //Se o resultado da potência for igual a "x", retorne true.
+                return true;
+            }else if(resultado > x){
+                break;  // Se o resultado da potência exceder "x", retorne false.
             }
-                    
-            for (int i = 1; i <= x; i++){ //Sistema de repetição
-                resultado = (int) Math.pow(n, i);
-                //A variável "resultado" vai calcular a base "n" com o expoente "i" e guardar o resultado para comparação até "i" ser maior ou igual a "x" no sistema de repetição.
-                
-                if(resultado == x){ //Se o resultado da potência for igual a "x", retorne true.
-                    return true;
-                }else if(resultado > x){
-                    break;  // Se o resultado da potência exceder "x", retorne false.
-                }
-            }  
-            return false;
+        }  
+        return false;
     }
 
-    public static void distanciaCartesiana() {
+    public static void distancia_Cartesiana() {
 
-            double distancia, x1, y1, x2, y2;
-            Scanner entrada = new Scanner (System.in);
+        //variaveis
+        double distancia, x1, y1, x2, y2;
 
-            x1 = entrada.nextDouble();
-            y1 = entrada.nextDouble();
-            x2 = entrada.nextDouble();
-            y2 = entrada.nextDouble();
+        //entrada
+        Scanner entrada = new Scanner (System.in);
+        x1 = entrada.nextDouble();
+        y1 = entrada.nextDouble();
+        x2 = entrada.nextDouble();
+        y2 = entrada.nextDouble();
+        entrada.close();
 
-        distancia = calculo_cartesiano(x1, y1, x2, y2);
+        //saida
+        distancia = calculo_Cartesiano(x1, y1, x2, y2);
         System.out.printf("Distância entre os pontos: %d\n", distancia);
     }
 
-    public static double calculo_cartesiano(double x1, double y1, double x2, double y2) {
+    public static double calculo_Cartesiano(double x1, double y1, double x2, double y2) {
 
         double ponto_X, ponto_Y, distancia;
 
@@ -114,6 +124,18 @@ public class exercicios_funcoes_EAD{
         } else{
             return z * fatorial(z - 1);
         }
+    }
+
+    public static int combinacao_Saida(int x, int fat_x, int y, int fat_y, int Combinacao, int fat_menos) {
+
+        //saida
+        System.out.printf("%d! = %d\n", x, fat_x);
+        System.out.printf("%d! = %d\n", y, fat_y);
+        System.out.printf("(%d - %d)! = %d\n", x, y, fat_menos);
+        System.out.printf("%d + %d = %d\n", x, y, Combinacao);
+        linha();
+        System.out.printf("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao);
+        return combinacao_Saida();
     }
 
     public static void combinacao() {
@@ -151,17 +173,8 @@ public class exercicios_funcoes_EAD{
 
         Combinacao = fat_x / (fat_y * fat_menos);
 
-        //saida
-        System.out.printf("%d! = %d\n", x, fat_x);
-        System.out.printf("%d! = %d\n", y, fat_y);
-        System.out.printf("(%d - %d)! = %d\n", x, y, fat_menos);
-        System.out.printf("%d + %d = %d\n", x, y, Combinacao);
-        linha();
-        System.out.printf("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao);
+        //Fazer uma funcao saida
     }
-
-
-
 
     public static void main(String[] args) {
         
@@ -174,7 +187,7 @@ public class exercicios_funcoes_EAD{
 
         //eh_pot2(x);
         //eh_potN(x, y);
-        //distanciaCartesiana();
+        //distancia_Cartesiana();
         combinacao();
     }
 }
