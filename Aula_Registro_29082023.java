@@ -1,14 +1,17 @@
 import java.util.Scanner;
 
-class Produto{
+//Classs = Classe
+//Classe é como um agrupamento de atributos, está atuando como um Registrador
+
+class Produto{ //Classe
     String descricao = "";
     int lote = 0;
     float peso = 0.0f;
 }
 
-class Cartao{
+class Cartao{ //Classe
     String nome, bandeira, numero_cartao;
-    int cvv, validadeano, validademes;
+    int cvv, vencimento_ano, vencimento_mes;
 }
 
 class Aula_Registro_29082023{
@@ -50,34 +53,20 @@ class Aula_Registro_29082023{
         c.bandeira = entrada.nextLine();
 
         System.out.println("Mes e ano de vencimento: (separado por espaço) ");
-        c.validademes = entrada.nextInt();
-        c.validadeano = entrada.nextInt();
+        c.vencimento_mes = entrada.nextInt();
+        c.vencimento_ano = entrada.nextInt();
 
         System.out.println("CVV (Codigo de Seguranca): ");
         c.cvv = entrada.nextInt();
-        entrada.close();
 
         return c;
-
-        // cartao_1.nome = "João Gomes da Silva";
-        // cartao_1.data_de_validade = "09/2025";
-        // cartao_1.cvv = 754;
-        // cartao_1.numero_cartao = "4567874585124893";
-
-        // cartao_2.nome = "Henrique Gall Pereira";
-        // cartao_2.data_de_validade = "03/2025";
-        // cartao_2.cvv = 845;
-        // cartao_2.numero_cartao = "8794764528744895";
-
-        // System.out.printf("Cartao de credito de: %s, %s, %d, %s\n", cartao_1.nome, cartao_1.numero_cartao, cartao_1.cvv, cartao_1.data_de_validade);
-        // System.out.printf("Cartao de credito de: %s, %s, %d, %s\n", cartao_2.nome, cartao_2.numero_cartao, cartao_2.cvv, cartao_2.data_de_validade);
     }
 
     public static void Cartao_Saida(Cartao cartao){
         System.out.println("Nome      : "+cartao.nome);
         System.out.println("Numero    : "+cartao.numero_cartao);
         System.out.println("Bandeira  : "+cartao.bandeira);
-        System.out.println("Vencimento: "+cartao.vencimentomes+"/"+cartao.vencimentoano);
+        System.out.println("Vencimento: "+cartao.vencimento_mes+"/"+cartao.vencimento_ano);
         System.out.println("CVV       : "+cartao.cvv);
     }
 
@@ -85,23 +74,18 @@ class Aula_Registro_29082023{
         
         //variaveis
         int n_clientes = 3, i;
-
-        Cartao cliente_1;
-
-        Cartao[] cartoes = new Cartao_bancario(n_clientes);
+        Cartao[] cartoes = new Cartao[n_clientes]; //Vetor (Array)
 
         System.out.println("=== NOVO SISTEMA DA AMAZON PRIME ===");
         for(i = 0; i < n_clientes; i++){
-            cartoes[i]= new Cartao();
+            System.out.printf("** Cliente %d **\n", i);
+            cartoes[i]= Cartao_bancario();
         }
 
         for(i = 0; i < n_clientes; i++){
             System.out.printf("** Cliente %d **\n", i);
             Cartao_Saida(cartoes[i]);
         }
-
-
-
         //Produto_saida();
     }
 }
