@@ -125,15 +125,9 @@ public class Vetores_beecrowd{
         for(int i = 0; i < 20; i ++){ //Sistema de repetição para saída do resultado.
             System.out.printf("N[%d] = %d\n", i, N[i]);
         }
+    }
 
-        public static double calculo_Percentual(int total_tentativas, int total_sucessos) {
-            if(total_tentativas == 0){
-                return 0;
-            }
-            return ((double) total_sucessos / total_tentativas) * 100;
-        }
-
-        public static void beecrowd_2310(){
+    public static void beecrowd_2310(){
 
         //beecrowd_2310 - 
         /*Explicação
@@ -160,7 +154,7 @@ public class Vetores_beecrowd{
         Edson
         3 3 3
         1 2 3
-    
+
         Exemplo de Saída
         Pontos de Saque: 19.05 %.
         Pontos de Bloqueio: 63.33 %.
@@ -214,7 +208,13 @@ public class Vetores_beecrowd{
         System.out.printf("Pontos de Bloqueio: %.2f %%.\n", percentual_sucesso_bloqueios);
         System.out.printf("Pontos de Ataque: %.2f %%.\n", percentual_sucesso_ataques);
     }
-}
+
+    public static double calculo_Percentual(int total_tentativas, int total_sucessos) {
+        if(total_tentativas == 0){
+            return 0;
+        }
+        return ((double) total_sucessos / total_tentativas) * 100;
+    }
 
     public static void main(String[] args) {
         //beecrowd_1174();

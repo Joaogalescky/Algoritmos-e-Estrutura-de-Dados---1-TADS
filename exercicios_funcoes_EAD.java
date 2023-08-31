@@ -126,16 +126,32 @@ public class exercicios_funcoes_EAD{
         }
     }
 
-    public static int combinacao_Saida(int x, int fat_x, int y, int fat_y, int Combinacao, int fat_menos) {
+    public static String combinacao_Saida(int x, int fat_x, int y, int fat_y, int Combinacao, int fat_menos) {
+    //alterado de "int" para "String" para utilizar o output
+    
+    //output = saída de um processo
+
+    /*Explicação
+        O output é uma variável do tipó Stringbuilder, sendo usado para construir uma string que representa a saída formatada desejada.
+        
+        StringBuilder output = new Stringbuilder();
+        StringBuilder é uma classe em Java que permite construir strings de forma eficiente (ex: concatenar pedaços de textos).
+
+        Quando é chamado os "append", estará acrescentando diferentes partes da saída formatada à string em construção.
+        Quando for finalizar, chamar o metódo "toString()" na variável "output", convertendo o conteúdo no "StringBuilder" em uma string regular.
+
+        StringBuilder é +eficiente em desempenho especialmente em loops ou em concatenações.
+    */
 
         //saida
-        System.out.printf("%d! = %d\n", x, fat_x);
-        System.out.printf("%d! = %d\n", y, fat_y);
-        System.out.printf("(%d - %d)! = %d\n", x, y, fat_menos);
-        System.out.printf("%d + %d = %d\n", x, y, Combinacao);
+        StringBuilder output = new StringBuilder();
+        output.append(String.format("%d! = %d\n", x, fat_x));
+        output.append(String.format("%d! = %d\n", y, fat_y));
+        output.append(String.format("(%d - %d)! = %d\n", x, y, fat_menos));
+        output.append(String.format("%d + %d = %d\n", x, y, Combinacao));
         linha();
-        System.out.printf("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao);
-        return combinacao_Saida();
+        output.append(String.format("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao));
+        return output.toString();
     }
 
     public static void combinacao() {
@@ -174,6 +190,8 @@ public class exercicios_funcoes_EAD{
         Combinacao = fat_x / (fat_y * fat_menos);
 
         //Fazer uma funcao saida
+        String output = combinacao_Saida(x, fat_x, y, fat_y, Combinacao, fat_menos);
+        System.out.println(output);
     }
 
     public static void main(String[] args) {
