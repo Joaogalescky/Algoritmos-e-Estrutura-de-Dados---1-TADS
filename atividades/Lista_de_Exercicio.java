@@ -6,8 +6,6 @@ package atividades;
 
 import java.util.Scanner;
 
-import javax.security.auth.x500.X500Principal;
-
 public class Lista_de_Exercicio{
 
     //Primos Intervalo
@@ -179,20 +177,20 @@ public class Lista_de_Exercicio{
 
         Scanner entrada = new Scanner (System.in);
         x = entrada.nextInt();
-        //y = entrada.nextInt();
+        y = entrada.nextInt();
         entrada.close();
 
         //**Primos no Intervalo**
-        //Primo(x, y);
+        Primo(x, y);
 
         //**Ordenados**
-        //Ordenados();
+        Ordenados();
 
         //**Perfeitos**
-        //Perfeito(x, y);
+        Perfeito(x, y);
 
         //**Piramide**
-        //Piramide(x);
+        Piramide(x);
 
         //**Primos perfeitos**
     }

@@ -21,7 +21,7 @@ import java.util.Scanner;
         perimetro2 = (float) distancia_entre_dois_pontos(x2, y2, x0, y0);
 
         total = (float) perimetro + perimetro1 + perimetro2;
-        return perimetro;
+        return total;
     }
 
     public static void main(String[] args) {

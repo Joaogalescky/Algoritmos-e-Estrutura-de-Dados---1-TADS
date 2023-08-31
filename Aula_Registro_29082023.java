@@ -86,6 +86,7 @@ class Aula_Registro_29082023{
             System.out.printf("** Cliente %d **\n", i);
             Cartao_Saida(cartoes[i]);
         }
+        
         //Produto_saida();
     }
 }

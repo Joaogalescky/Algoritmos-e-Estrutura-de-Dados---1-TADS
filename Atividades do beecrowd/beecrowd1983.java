@@ -22,6 +22,7 @@ public class beecrowd1983{
                 matricula_M = matricula; //"matricula_M" vai guardar o valor da "matricula"
                 }
         }
+        entrada.close();
 
         //saida
         if(nota_M==0){ //Se a "nota_M" for menor que 8

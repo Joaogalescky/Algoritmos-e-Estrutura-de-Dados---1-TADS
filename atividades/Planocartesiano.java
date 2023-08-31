@@ -24,6 +24,7 @@ import java.util.Scanner;
         yb = entrada.nextFloat();
         System.out.println("Digite o valor de 'ya'");
         ya = entrada.nextFloat();
+        entrada.close();
  
         float retorno;
         retorno = distancia_entre_dois_pontos(xb, xa, yb, ya);

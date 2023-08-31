@@ -5,10 +5,9 @@ public class beecrowd1066 {
  
         //variaveis
         int N, i, positivo=0, negativo=0, par=0, impar=0;
-        Scanner entrada;
     
         //entrada
-        entrada = new Scanner (System.in);
+        Scanner entrada = new Scanner (System.in);
 
         //processamento e saida
         for(i=1;i<=5;i++){ //Sistema de repetição: "i" = 1, se "i" menor ou igual a 5, "i" recebe + 1

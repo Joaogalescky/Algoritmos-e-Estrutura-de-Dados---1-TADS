@@ -18,8 +18,9 @@ public class função2 {
         //entrada
         Scanner entrada = new Scanner (System.in);
         System.out.println("Digite um valor");
+        n = entrada.nextInt();
         System.out.printf("É positivo? %b\n", ehPositivo(n = entrada.nextInt()));
-        
+        entrada.close();
     }
     
 }

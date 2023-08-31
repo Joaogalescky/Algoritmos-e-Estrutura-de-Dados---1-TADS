@@ -6,10 +6,9 @@ public class beecrowd2862 {
     
         //variaveis
         int C, N, i;
-        Scanner entrada;
     
         //entrada
-        entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
         C = entrada.nextInt();
         
         //processamento e saida

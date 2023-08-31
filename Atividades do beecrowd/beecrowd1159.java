@@ -4,12 +4,11 @@ public class beecrowd1159 {
     public static void main(String[] args) {
 
         //variaveis
-        int X, aux, aux2, soma;
+        int X, aux, aux2;
         
         //entrada
         Scanner entrada = new Scanner (System.in);
         X = entrada.nextInt();
-
         
         //processamento e saida
         while(X!=0){ //Sistema de repetição: Se "X" for diferente de 0, vai continuar, senão, vai parar.

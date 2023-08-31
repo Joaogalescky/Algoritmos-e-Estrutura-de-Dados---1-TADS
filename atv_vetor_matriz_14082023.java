@@ -57,7 +57,7 @@ class atv_vetor_matriz_14082023{
         //variáveis
         Scanner entrada = new Scanner (System.in);
         int[][] matriz;
-        int i, j, n_linhas = 4, n_colunas = 4, aux;
+        int i, j, n_linhas = 4, n_colunas = 4;
 
         matriz = new int [n_linhas][n_colunas];
 

@@ -19,5 +19,6 @@ class Recursividadefibonatte{
         Scanner entrada = new Scanner(System.in);
         int n = entrada.nextInt();
         System.out.println(fibonacci(n));
+        entrada.close();
     }
 } 

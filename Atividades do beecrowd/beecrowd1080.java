@@ -6,10 +6,9 @@ public class beecrowd1080 {
         
     //variaveis
     int N, i, mem, aux;
-    Scanner entrada;
     
     //entrada
-    entrada = new Scanner (System.in);
+    Scanner entrada = new Scanner (System.in);
     aux = 0; //Variável de memoria para "N"
     mem = 0; //Variável de memória para "i"
 

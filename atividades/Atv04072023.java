@@ -1,5 +1,4 @@
 package atividades;
-import java.util.Scanner;
 
 class Atv04072023{
 
@@ -24,7 +23,6 @@ class Atv04072023{
     }
 
     public static int char2decimal (char c) {
-         int dec;
 
          switch(c){
             case 'A':
