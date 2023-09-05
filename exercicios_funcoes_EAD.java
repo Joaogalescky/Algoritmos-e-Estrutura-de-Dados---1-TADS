@@ -119,10 +119,28 @@ public class exercicios_funcoes_EAD{
     }
 
     public static int fatorial(int z) {
+        //z = número que será calculado o fatorial
+        //if (z == 0 || z == 1) = verifica se é 0 ou 1, caso sim, retorna 1 imediatamente
         if (z == 0 || z == 1){
             return 1;
+        //caso não, multiplica z pelo resultado da chamada recursiva, que subtrai 1 de z a cada vez, ocorrendo até z ser 0 ou 1, terminando a recursividade e multiplicando junto todos os valores.
         } else{
             return z * fatorial(z - 1);
+        /*Exemplo:
+        Por exemplo, se você chamar fatorial(5), a função fará o seguinte:
+
+        fatorial(5) chama fatorial(4), que chama fatorial(3), e assim por diante, até que fatorial(1) seja chamado, que retorna 1.
+        
+        Agora, a recursão começa a se desenrolar: fatorial(2) retorna 2 vezes fatorial(1), que é 2 * 1 = 2.
+        
+        Em seguida, fatorial(3) retorna 3 vezes fatorial(2), que é 3 * 2 = 6.
+        
+        Continuando, fatorial(4) retorna 4 vezes fatorial(3), que é 4 * 6 = 24.
+        
+        Finalmente, fatorial(5) retorna 5 vezes fatorial(4), que é 5 * 24 = 120.
+        
+        Portanto, fatorial(5) retorna 120, que é o fatorial de 5. A função funciona da mesma maneira para qualquer outro valor não negativo de z.
+        */
         }
     }
 
