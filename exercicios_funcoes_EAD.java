@@ -8,6 +8,8 @@ public class exercicios_funcoes_EAD{
         14. Desenvolva uma função chamada potN, que possui dois parâmetros x e n. A função deve retornar verdadeiro caso x seja uma potência de n.
 
         15. Implemente uma função chamada distanciaCartesiana que recebe dois pares de números, que correspondem a pontos em um plano cartesiano com coordenadas x, y. A função deve retornar a distância entre esses dois pontos. Não é necessário arredondar valores.
+
+        8. A combinação simples é um tipo de agrupamento de análise combinatória. Esta consiste em todas as variações possíveis de elementos de dado conjunto, desde que a ordem não seja importante.
     */
 
     public static void linha() {
@@ -126,49 +128,49 @@ public class exercicios_funcoes_EAD{
         //caso não, multiplica z pelo resultado da chamada recursiva, que subtrai 1 de z a cada vez, ocorrendo até z ser 0 ou 1, terminando a recursividade e multiplicando junto todos os valores.
         } else{
             return z * fatorial(z - 1);
-        /*Exemplo:
-        Por exemplo, se você chamar fatorial(5), a função fará o seguinte:
-
-        fatorial(5) chama fatorial(4), que chama fatorial(3), e assim por diante, até que fatorial(1) seja chamado, que retorna 1.
-        
-        Agora, a recursão começa a se desenrolar: fatorial(2) retorna 2 vezes fatorial(1), que é 2 * 1 = 2.
-        
-        Em seguida, fatorial(3) retorna 3 vezes fatorial(2), que é 3 * 2 = 6.
-        
-        Continuando, fatorial(4) retorna 4 vezes fatorial(3), que é 4 * 6 = 24.
-        
-        Finalmente, fatorial(5) retorna 5 vezes fatorial(4), que é 5 * 24 = 120.
-        
-        Portanto, fatorial(5) retorna 120, que é o fatorial de 5. A função funciona da mesma maneira para qualquer outro valor não negativo de z.
-        */
         }
+
+        /*Exemplo:
+            Por exemplo, fatorial de 5, será da seguinte forma:
+
+            fatorial(5) chama fatorial(4), que chama fatorial(3), até que fatorial(1) seja chamado, que retorna 1.
+            
+            Agora, começa a recursividade: fatorial(2) retorna 2 vezes fatorial(1), que é 2 * 1 = 2.
+            
+            Em seguida, fatorial(3) retorna 3 vezes fatorial(2), que é 3 * 2 = 6.
+            
+            Continuando, fatorial(4) retorna 4 vezes fatorial(3), que é 4 * 6 = 24.
+            
+            Finalmente, fatorial(5) retorna 5 vezes fatorial(4), que é 5 * 24 = 120.
+            
+            Portanto, fatorial(5) retorna 120, que é o fatorial de 5.
+            
+            **Funciona da mesma maneira para qualquer outro valor não negativo de z**.
+        */
     }
 
     public static String combinacao_Saida(int x, int fat_x, int y, int fat_y, int Combinacao, int fat_menos) {
-    //alterado de "int" para "String" para utilizar o output
-    
-    //output = saída de um processo
-
-    /*Explicação
-        O output é uma variável do tipó Stringbuilder, sendo usado para construir uma string que representa a saída formatada desejada.
+        //alterado de "int" para "String" para utilizar o output
         
-        StringBuilder output = new Stringbuilder();
-        StringBuilder é uma classe em Java que permite construir strings de forma eficiente (ex: concatenar pedaços de textos).
+        /*Explicação
+            output = saída de um processo
+            O output é uma variável do tipo Stringbuilder, sendo usado para construir uma string que representa a saída formatada desejada.
+            
+            StringBuilder output = new Stringbuilder();
+            StringBuilder é uma classe em Java que permite construir strings de forma eficiente (ex: concatenar(juntar) pedaços de textos).
 
-        Quando é chamado os "append", estará acrescentando diferentes partes da saída formatada à string em construção.
-        Quando for finalizar, chamar o metódo "toString()" na variável "output", convertendo o conteúdo no "StringBuilder" em uma string regular.
+            Quando é chamado os "append", estará acrescentando diferentes partes da saída formatada à string em construção.
+            Quando for finalizar, chamar o metódo "toString()" na variável "output", convertendo o conteúdo no "StringBuilder" em uma string regular.
 
-        StringBuilder é +eficiente em desempenho especialmente em loops ou em concatenações.
-    */
+            StringBuilder é +eficiente em desempenho especialmente em loops ou em concatenações.
+        */
 
         //saida
         StringBuilder output = new StringBuilder();
         output.append(String.format("%d! = %d\n", x, fat_x));
         output.append(String.format("%d! = %d\n", y, fat_y));
         output.append(String.format("(%d - %d)! = %d\n", x, y, fat_menos));
-        output.append(String.format("%d + %d = %d\n", x, y, Combinacao));
-        linha();
-        output.append(String.format("C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao));
+        output.append(String.format("Logo: C^" + x + "^" + y + " = " + x + "!/" + y + "!(" + x + " - " + y + ")! = " + Combinacao));
         return output.toString();
     }
 
@@ -207,7 +209,8 @@ public class exercicios_funcoes_EAD{
 
         Combinacao = fat_x / (fat_y * fat_menos);
 
-        //Fazer uma funcao saida
+        //Funcao saida
+        linha();
         String output = combinacao_Saida(x, fat_x, y, fat_y, Combinacao, fat_menos);
         System.out.println(output);
     }
