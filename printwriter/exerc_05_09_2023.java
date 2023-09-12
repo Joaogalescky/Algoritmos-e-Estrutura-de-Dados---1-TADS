@@ -1,3 +1,4 @@
+package printwriter;
 import java.util.Scanner;
 import java.io.PrintWriter;
 

@@ -1,4 +1,4 @@
-package vetores_vetor;
+package vetor_unidimensional;
 
 import java.util.Scanner;
 

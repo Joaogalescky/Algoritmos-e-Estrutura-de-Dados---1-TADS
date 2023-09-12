@@ -1,5 +1,3 @@
-package Aula_arquivo;
-
 //Pesquisar
 import java.util.Scanner;
 import java.io.File;

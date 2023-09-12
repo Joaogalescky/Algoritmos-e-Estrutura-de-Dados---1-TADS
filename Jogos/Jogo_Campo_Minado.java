@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Jogo_Campo_Minado {
+public class Jogo_campo_minado {
     public static void main(String[] args) {
         int tamanhoTabuleiro = 8;
         int numeroMinas = 10;
