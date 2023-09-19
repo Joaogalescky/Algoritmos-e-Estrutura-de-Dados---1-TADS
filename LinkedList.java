@@ -4,10 +4,9 @@ Uma lista encadeada ou lista ligada é uma estrutura de dados linear e dinâmica
 */
 import java.util.Scanner;
 
-public class Main{
+public class LinkedList{
 
 public static Scanner entrada;
-
     public static void LinkedList() {
         // biblioteca LinkedList
         int i;
@@ -26,7 +25,7 @@ public static Scanner entrada;
 
         valores.set(1, valores.get(1)+5);
         
-        for(i=0;i<valores.size();i++){
+        for(i = 0; i<valores.size(); i++){
             System.out.println(valores.get(i));
         }
     }
@@ -34,7 +33,7 @@ public static Scanner entrada;
     public static void EX(){
         //variaveis
         int i;
-        float valor=-1, soma=0, media;
+        float valor = -1, soma = 0, media;
 
         //entrada
         Scanner entrada = new Scanner (System.in);
@@ -44,9 +43,9 @@ public static Scanner entrada;
         System.out.println("digite varios valores. 0 para finalizar");
 
         //processo
-        while(valor !=0.0){
+        while(valor != 0.0){
            valor = entrada.nextFloat();
-           if(valor!=0.0){
+           if(valor != 0.0){
             valores.add(valor);
             }
         }
@@ -57,26 +56,24 @@ public static Scanner entrada;
         }
         media = soma / valores.size();
         System.out.println("media: "+ media);
-       entrada.close();
+        entrada.close();
     }
 
     public static void EX1(){
-        int i, k=100, passo=10;
+        int i = 0, k = 100, passo = 10;
         LinkedList<Integer> valores;
-
         valores = new LinkedList<Integer>();
-        i=0;
+        
         while(i < k){
             valores.add(i);
             i += passo;
         }
         valores.remove(3);
 
-        for(i=0;i<valores.size();i++){
+        for(i = 0; i<valores.size(); i++){
             System.out.println(valores.get(i));
         }
     }
-
 
     public static void main(String[] args) {
         EX1();
