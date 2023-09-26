@@ -19,7 +19,7 @@ public class Minado{
         Colocar_bombas();
     }
 
-    private void Iniciar_tabuleiro(){
+    public void Iniciar_tabuleiro(){
         //Sistema de repetição: criando tabuleiro contendo as bombas
         for(int i = 0; i < tabuleiro_tamanho; i++){
             for(int j = 0; j < tabuleiro_tamanho; j++){
@@ -29,7 +29,7 @@ public class Minado{
         }
     }
 
-    private void Colocar_bombas(){
+    public void Colocar_bombas(){
         //variaveis
         Random randomico = new Random();
         int bombas_colocadas = 0;
@@ -47,7 +47,7 @@ public class Minado{
         }
     }
 
-    private void Tabuleiro_visivel(){
+    public void Tabuleiro_visivel(){
         System.out.println("Tabuleiro:");
         //Sistema de repetição: criando tabuleiro visivel ao usuário
         for(int i = 0; i < tabuleiro_tamanho; i++){
@@ -86,7 +86,7 @@ public class Minado{
         entrada.close();
     }
 
-    private void Descobrir_celula(int linha, int coluna){
+    public void Descobrir_celula(int linha, int coluna){
         int bombas_adjacentes, i, j;
 
         if(tabuleiro_visivel[linha][coluna] != '-'){
@@ -109,7 +109,7 @@ public class Minado{
         }
     }
 
-    private int Contar_bombas_adjacentes(int linha, int coluna){
+    public int Contar_bombas_adjacentes(int linha, int coluna){
         int bombas_adjacentes = 0;
         int i, j;
 
@@ -123,7 +123,7 @@ public class Minado{
         return bombas_adjacentes;
     }
 
-    private void Fim_de_jogo(){
+    public void Fim_de_jogo(){
         boolean vitoria = true;
         int i, j;
 

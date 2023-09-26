@@ -55,6 +55,11 @@ class Gerenciamento{
     private int assentos_confirmados = 0;
     private int ingressos_estudantes = 0;
     private double total_arrecadado = 0.00;
+    /* Private - oque é
+    O private é um modificador de acesso que define o nível de visibilidade de uma classe, atributo ou método em Java.
+    Significa que a variável somente será acessa pela classe/escopo que foi declarada, tornando a privada, não podendo ser usada fora dela.
+    Torna-se útil quando deseja-se encapsular parte da lógica de um programa e restringir o acesso de uma classe em um contexto específico.
+    */
 
     public void menu_administrativo(){
         Scanner entrada = new Scanner(System.in);
@@ -126,6 +131,10 @@ class Gerenciamento{
 
     public void ver_mapa_assentos(){
         System.out.println("\nMapa de Assentos:");
+
+        System.out.println("=====================");
+        System.out.println("         PALCO          ");
+        System.out.println("=====================");
 
         for(int i = 0; i < 15; i++){ //Sistema de repetição: linhas da matriz
             for(int j = 0; j < 10; j++){ //Sistema de repetição: colunas da matriz
