@@ -7,38 +7,56 @@ import java.util.Scanner;
 - As apresentações dos trabalhos serão nos dias 03-04/10/2023.
 */
 
-public class Teatro{
+public class Teste_teatro{
     public static void main(String[] args){
 
-        //Variaveis
+        //variaveis
         Scanner entrada = new Scanner(System.in);
         Gerenciamento gerenciador = new Gerenciamento();
-        int escolher;
+        int escolha;
 
-        while(true){
-            //Menu
+        //menu principal
+        while (true) {
             System.out.println("\nBem-vindo ao Sistema de Gerenciamento de Teatro!");
             System.out.println("Escolha uma opção:");
-            System.out.println("1. Área Administrativa");
-            System.out.println("2. Área de Cliente");
-            System.out.println("3. Sair");
+            System.out.println("1. Visualizar mapa de assentos");
+            System.out.println("2. Realizar reserva");
+            System.out.println("3. Confirmar reserva");
+            System.out.println("4. Cancelar reserva");
+            System.out.println("5. Alterar valor do ingresso");
+            System.out.println("6. Gerar relatório");
+            System.out.println("7. Sair");
 
-            escolher = entrada.nextInt();
+            escolha = entrada.nextInt();
 
-            //Ações do menu
-            switch(escolher){
+            //opções do menu
+            switch (escolha) {
                 case 1:
-                    gerenciador.menu_administrativo();
+                    gerenciador.mapa_assentos();
                     break;
                 case 2:
-                    gerenciador.menu_cliente();
+                    gerenciador.reservar();
                     break;
                 case 3:
+                    gerenciador.confirmar_reserva();
+                    break;
+                case 4:
+                    gerenciador.cancelar_reserva();
+                    break;
+                case 5:
+                    System.out.println("Digite o novo valor do ingresso:");
+                    double novo_ingresso = entrada.nextDouble();
+                    gerenciador.alterar_valor_ingresso(novo_ingresso);
+                    break;
+                case 6:
+                    gerenciador.gerar_relatorio();
+                    break;
+                case 7:
                     System.out.println("Saindo do sistema. Obrigado!");
                     System.exit(0);
-                    break;
+                    //System.exit = fecha o código
                 default:
-                System.out.println("Opção inválida. Tente novamente.");
+                    System.out.println("Opção inválida. Tente novamente.");
             }
         }
     }
@@ -46,185 +64,166 @@ public class Teatro{
 
 class Gerenciamento{
 
-    //Variaveis
-    private double valor_ingresso_atual = 50.00;
-    private int[][] mapa_assentos = new int[15][10]; //Mapa de assentos: 0-livre, 1-ocupado, 2-reservado
-    private double valor_ingresso = valor_ingresso_atual;
-    private int assentos_livres = 150;
+    //variaveis privadas
+    private double valor_ingresso = 50.0;
+    private char[][] mapa_assentos = new char[14][10];
+    private int assentos_disponiveis = 150;
     private int assentos_reservados = 0;
     private int assentos_confirmados = 0;
-    private int ingressos_estudantes = 0;
-    private double total_arrecadado = 0.00;
+    private int vale_estudante = 0;
+    private double total_arrecadado = 0.0;
     /* Private - oque é
     O private é um modificador de acesso que define o nível de visibilidade de uma classe, atributo ou método em Java.
     Significa que a variável somente será acessa pela classe/escopo que foi declarada, tornando a privada, não podendo ser usada fora dela.
     Torna-se útil quando deseja-se encapsular parte da lógica de um programa e restringir o acesso de uma classe em um contexto específico.
     */
 
-    public void menu_administrativo(){
-        Scanner entrada = new Scanner(System.in);
-        int escolher;
-        
-        while(true){
-            //Menu
-            System.out.println("\nMenu Administrativo:");
-            System.out.println("1. Visualizar mapa de assentos");
-            System.out.println("2. Gerar relatório");
-            System.out.println("3. Alterar valor do ingresso");
-            System.out.println("4. Voltar ao menu principal");
-
-            escolher = entrada.nextInt();
-
-            //Ações do menu
-            switch(escolher){
-                case 1:
-                    ver_mapa_assentos();
-                    break;
-                case 2:
-                    relatorio();
-                    break;
-                case 3:
-                    System.out.println("Digite o novo valor do ingresso:");
-                    valor_ingresso = entrada.nextDouble();
-                    System.out.println("Valor do ingresso alterado para R$:" + valor_ingresso);
-                    break;
-                case 4:
-                    return;
-                default:
-                System.out.println("Opção inválida. Tente novamente.");
+    //mapa do teatro (matriz)
+    public Gerenciamento(){
+        for (int i = 0; i < 15; i++){
+            for (int j = 0; j < 10; j++){
+                mapa_assentos[i][j] = '_';
             }
         }
     }
 
-    public void menu_cliente(){
-        Scanner entrada = new Scanner(System.in);
-        int escolher;
-
-        //Menu
-        while(true){
-            System.out.println("\nMenu Cliente:");
-            System.out.println("1. Visualizar mapa de assentos");
-            System.out.println("2. Realizar reserva");
-            System.out.println("3. Cancelar reserva");
-            System.out.println("4. Voltar ao menu principal");
-
-            escolher = entrada.nextInt();
-
-            //Ações do menu
-            switch(escolher){
-                case 1:
-                    ver_mapa_assentos();
-                    break;
-                case 2:
-                    reservar();
-                    break;
-                case 3:
-                    cancelar_reserva();
-                    break;
-                case 4:
-                    return;
-                default:
-                System.out.println("Opção inválida. Tente novamente.");
-            }
-        }
-    }
-
-    public void ver_mapa_assentos(){
+    
+    public void mapa_assentos(){
         System.out.println("\nMapa de Assentos:");
-
         System.out.println("=====================");
         System.out.println("         PALCO          ");
         System.out.println("=====================");
 
-        for(int i = 0; i < 15; i++){ //Sistema de repetição: linhas da matriz
-            for(int j = 0; j < 10; j++){ //Sistema de repetição: colunas da matriz
 
-                if(mapa_assentos[i][j] == 0){ //0 = livre
-                    System.out.print("_ ");
-                } else if(mapa_assentos[i][j] == 1){ //1 = ocupado
-                    System.out.print("X ");
-                } else if(mapa_assentos[i][j] == 2){ //2 = reservado
-                    System.out.print("R ");
-                }
+        for(int i = 0; i < 15; i++){ //sistema de repetição: linhas da matriz
+            for(int j = 0; j < 10; j++){ //sistema de repetição: colunas da matriz
+                System.out.print(mapa_assentos[i][j] + " "); //imprime o valor do elemento na posicao da matriz (cria a representação visual)
             }
             System.out.println();
         }
     }
 
     public void reservar(){
-        //Variaveis
+
+        //variaveis
         Scanner entrada = new Scanner(System.in);
-        int coluna, linha;
-        String resposta;
+        int fila, cadeira;
 
         //entrada
         System.out.println("\nRealizar Reserva:");
 
-        System.out.print("Filas entre 0 a 14: ");
-        coluna = entrada.nextInt();
+        System.out.print("Fila (0 a 14): ");
+        fila = entrada.nextInt();
 
-        System.out.print("Cadeiras entre 0 a 9: ");
-        linha = entrada.nextInt();
+        System.out.print("Cadeira (0 a 9): ");
+        cadeira = entrada.nextInt();
 
         //processamento
-        if (coluna < 0 || coluna > 14 || linha < 0 || linha > 9){ //Colocar conforme os valores colocados no vetor matriz
+        if (fila < 0 || fila > 14 || cadeira < 0 || cadeira > 9){ //verificar os valores fornecidos da fila da cadeira
             System.out.println("Assento inválido. Tente novamente.");
             return;
         }
 
-        //Caso seja estudante
-        if(mapa_assentos[coluna][linha] == 0){
+        if (mapa_assentos[fila][cadeira] == '_'){
             System.out.print("O cliente é estudante? (S/N): ");
-            resposta = entrada.next().toUpperCase(); //Tornar carácter maiúsculo
-        
-        if(resposta.equals("S")){
-                total_arrecadado += valor_ingresso / 2;
-                ingressos_estudantes++;
-            }else{
-                total_arrecadado += valor_ingresso;
-            }
+            String resposta = entrada.next().toUpperCase();
 
-            mapa_assentos[coluna][linha] = 2; //Marcar como reservado
-            assentos_reservados++;
-            assentos_livres--;
-            System.out.println("Reserva realizada com sucesso.");
+            if(resposta.equals("S")){ //caso seja estudante
+                mapa_assentos[fila][cadeira] = 'R'; //marcar como reservado
+                assentos_reservados ++;
+                assentos_disponiveis --;
+                vale_estudante ++;
+                System.out.println("Reserva realizada com sucesso.");
+            }else{ //caso não, marcar da mesma forma
+                mapa_assentos[fila][cadeira] = 'R';
+                assentos_reservados ++;
+                assentos_disponiveis --;
+                System.out.println("Reserva realizada com sucesso.");
+            }
         }else{
             System.out.println("Este assento já está ocupado ou reservado.");
         }
     }
 
-    public void cancelar_reserva(){
+    public void confirmar_reserva(){
+
+        //variaveis
         Scanner entrada = new Scanner(System.in);
-        int coluna, linha;
-        System.out.println("\nCancelar Reserva:");
+        System.out.println("\nConfirmar Reserva:");
+        int fila, cadeira;
 
-        System.out.print("Filas entre 0 a 14: ");
-        coluna = entrada.nextInt();
+        //entrada
+        System.out.print("Fila (0 a 14): ");
+        fila = entrada.nextInt();
 
-        System.out.print("Cadeiras entre 0 a 9: ");
-        linha = entrada.nextInt();
+        System.out.print("Cadeira (0 a 9): ");
+        cadeira = entrada.nextInt();
 
-        if(coluna < 0 || coluna > 14 || linha < 0 || linha > 9){ //Colocar conforme os valores colocados no vetor matriz
+        //processamento
+        if(fila < 0 || fila > 14 || cadeira < 0 || cadeira > 9){ 
             System.out.println("Assento inválido. Tente novamente.");
             return;
         }
 
-        if(mapa_assentos[coluna][linha] == 2){
-            mapa_assentos[coluna][linha] = 0; //Liberar o assento
-            assentos_reservados--;
-            assentos_livres++;
-            System.out.println("Reserva cancelada com sucesso.");
+        if(mapa_assentos[fila][cadeira] == 'R'){ //caso esteja reservado, trocar para confirmado
+            mapa_assentos[fila][cadeira] = 'X';
+            assentos_confirmados ++;
+            assentos_reservados --;
+            total_arrecadado += valor_ingresso;
+            System.out.println("Reserva confirmada com sucesso.");
         }else{
+            System.out.println("Assento não está reservado ou já está ocupado.");
+        }
+    }
+
+    public void cancelarReserva(){
+
+        //variaveis
+        Scanner entrada = new Scanner(System.in);
+        int fila, cadeira;
+
+        //entrada
+        System.out.println("\nCancelar Reserva:");
+
+        System.out.print("Fila (0 a 14): ");
+        fila = entrada.nextInt();
+
+        System.out.print("Cadeira (0 a 9): ");
+        cadeira = entrada.nextInt();
+
+        //processamento
+        if(fila < 0 || fila > 14 || cadeira < 0 || cadeira > 9){ 
+            System.out.println("Assento inválido. Tente novamente.");
+            return;
+        }
+
+        if(mapa_assentos[fila][cadeira] == 'R'){ //para cancelar o assento reservado, tem que estar reservado
+            mapa_assentos[fila][cadeira] = '_';
+            assentos_reservados --;
+            assentos_disponiveis ++;
+            System.out.println("Reserva cancelada com sucesso.");
+        }else{ //caso não esteja reservado, não cancele
             System.out.println("Este assento não está reservado.");
         }
     }
 
-    public void relatorio(){
+    public void alterar_valor_ingresso(double novo_ingresso) {
+
+        if(novo_ingresso > 0){
+            valor_ingresso = novo_ingresso;
+            System.out.println("Valor do ingresso alterado para R$" + valor_ingresso);
+        }else{
+            System.out.println("O novo valor do ingresso deve ser maior que zero.");
+        }
+    }
+
+    public void gerar_relatorio(){
+
         System.out.println("\nRelatório:");
-        System.out.println("Quantidade de lugares livres: " + assentos_livres);
+        System.out.println("Quantidade de lugares livres: " + assentos_disponiveis);
         System.out.println("Quantidade de lugares reservados: " + assentos_reservados);
         System.out.println("Quantidade de lugares confirmados: " + assentos_confirmados);
-        System.out.println("Quantidade de ingressos de estudantes: " + ingressos_estudantes);
+        System.out.println("Quantidade de ingressos de estudantes: " + vale_estudante);
         System.out.println("Valor total arrecadado: R$" + total_arrecadado);
     }
 }
