@@ -66,7 +66,7 @@ class Gerenciamento{
 
     //variaveis privadas
     private double valor_ingresso = 50.0;
-    private char[][] mapa_assentos = new char[14][10];
+    private char[][] mapa_assentos = new char[15][10];
     private int assentos_disponiveis = 150;
     private int assentos_reservados = 0;
     private int assentos_confirmados = 0;
@@ -77,6 +77,21 @@ class Gerenciamento{
     Significa que a variável somente será acessa pela classe/escopo que foi declarada, tornando a privada, não podendo ser usada fora dela.
     Torna-se útil quando deseja-se encapsular parte da lógica de um programa e restringir o acesso de uma classe em um contexto específico.
     */
+
+    // public static void Posicao_Fileiras(String [][] mapa_assentos) {
+
+    //     int i, j;
+
+    //     for(i = 0; i < mapa_assentos.length; i ++){
+    //         System.out.printf("%d", i);
+    //     }
+
+    //     for(j = 0; j < mapa_assentos.length; j ++){
+    //         System.out.printf("%s", mapa_assentos[i][j]);
+    //     }
+    //     System.out.println();
+    // }
+    //Descobrir como implementar no teatro e colocar no campo minado
 
     //mapa do teatro (matriz)
     public Gerenciamento(){
@@ -90,9 +105,9 @@ class Gerenciamento{
     
     public void mapa_assentos(){
         System.out.println("\nMapa de Assentos:");
-        System.out.println("=====================");
-        System.out.println("         PALCO          ");
-        System.out.println("=====================");
+        System.out.println("===================");
+        System.out.println("       PALCO       ");
+        System.out.println("===================");
 
 
         for(int i = 0; i < 15; i++){ //sistema de repetição: linhas da matriz
