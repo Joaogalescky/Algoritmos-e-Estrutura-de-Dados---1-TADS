@@ -7,7 +7,7 @@ import java.util.Scanner;
 - As apresentações dos trabalhos serão nos dias 03-04/10/2023.
 */
 
-public class Teste_teatro{
+public class Teatro{
     public static void main(String[] args){
 
         //variaveis
@@ -176,7 +176,7 @@ class Gerenciamento{
         }
     }
 
-    public void cancelarReserva(){
+    public void cancelar_reserva(){
 
         //variaveis
         Scanner entrada = new Scanner(System.in);
