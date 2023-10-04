@@ -78,26 +78,27 @@ class Gerenciamento{
     Torna-se útil quando deseja-se encapsular parte da lógica de um programa e restringir o acesso de uma classe em um contexto específico.
     */
 
-    // public static void Posicao_Fileiras(String [][] mapa_assentos) {
-
-    //     int i, j;
-
-    //     for(i = 0; i < mapa_assentos.length; i ++){
-    //         System.out.printf("%d", i);
-    //     }
-
-    //     for(j = 0; j < mapa_assentos.length; j ++){
-    //         System.out.printf("%s", mapa_assentos[i][j]);
-    //     }
-    //     System.out.println();
-    // }
-    //Descobrir como implementar no teatro e colocar no campo minado
+    public static void Posicao_Fileiras(char[][] mapa_assentos) {
+        System.out.print("  ");
+        for(int i = 0; i < mapa_assentos[0].length; i++) {
+            System.out.printf("%2d ", i);
+        }
+        System.out.println();
+    
+        for(int i = 0; i < mapa_assentos.length; i++) {
+            System.out.printf("%2d ", i);
+            for(int j = 0; j < mapa_assentos[i].length; j++) {
+                System.out.printf("%2s ", mapa_assentos[i][j]);
+            }
+            System.out.println();
+        }
+    }
 
     //mapa do teatro (matriz)
     public Gerenciamento(){
-        for (int i = 0; i < 15; i++){
-            for (int j = 0; j < 10; j++){
-                mapa_assentos[i][j] = '_';
+        for (int i = 0; i < 15; i++){ //sistema de repetição: linhas da matriz
+            for (int j = 0; j < 10; j++){ //sistema de repetição: colunas da matriz
+                mapa_assentos[i][j] = '_'; //imprime o valor do elemento na posicao da matriz (cria a representação visual)
             }
         }
     }
@@ -105,17 +106,14 @@ class Gerenciamento{
     
     public void mapa_assentos(){
         System.out.println("\nMapa de Assentos:");
-        System.out.println("===================");
-        System.out.println("       PALCO       ");
-        System.out.println("===================");
+        System.out.println("================================");
+        System.out.println("              PALCO             ");
+        System.out.println("================================");
+
+        Posicao_Fileiras(mapa_assentos);
 
 
-        for(int i = 0; i < 15; i++){ //sistema de repetição: linhas da matriz
-            for(int j = 0; j < 10; j++){ //sistema de repetição: colunas da matriz
-                System.out.print(mapa_assentos[i][j] + " "); //imprime o valor do elemento na posicao da matriz (cria a representação visual)
-            }
-            System.out.println();
-        }
+        System.out.println();
     }
 
     public void reservar(){
@@ -144,13 +142,13 @@ class Gerenciamento{
             String resposta = entrada.next().toUpperCase();
 
             if(resposta.equals("S")){ //caso seja estudante
-                mapa_assentos[fila][cadeira] = 'R'; //marcar como reservado
+                mapa_assentos[fila][cadeira] = 'E'; //marcar como reservado estudante
                 assentos_reservados ++;
                 assentos_disponiveis --;
                 vale_estudante ++;
                 System.out.println("Reserva realizada com sucesso.");
-            }else{ //caso não, marcar da mesma forma
-                mapa_assentos[fila][cadeira] = 'R';
+            }else{ //caso não estudante
+                mapa_assentos[fila][cadeira] = 'R'; //marcar como reservado comum
                 assentos_reservados ++;
                 assentos_disponiveis --;
                 System.out.println("Reserva realizada com sucesso.");
@@ -185,6 +183,13 @@ class Gerenciamento{
             assentos_confirmados ++;
             assentos_reservados --;
             total_arrecadado += valor_ingresso;
+            if(mapa_assentos[fila][cadeira] == 'E'){
+                mapa_assentos[fila][cadeira] = 'X';
+                assentos_confirmados ++;
+                assentos_reservados --;
+                valor_ingresso = valor_ingresso/2;
+                total_arrecadado += valor_ingresso;
+            }
             System.out.println("Reserva confirmada com sucesso.");
         }else{
             System.out.println("Assento não está reservado ou já está ocupado.");
@@ -212,13 +217,19 @@ class Gerenciamento{
             return;
         }
 
-        if(mapa_assentos[fila][cadeira] == 'R'){ //para cancelar o assento reservado, tem que estar reservado
+        //para cancelar o assento reservado, tem que estar reservado
+        if(mapa_assentos[fila][cadeira] == 'R'){ //para não estudantes
             mapa_assentos[fila][cadeira] = '_';
             assentos_reservados --;
             assentos_disponiveis ++;
-            System.out.println("Reserva cancelada com sucesso.");
-        }else{ //caso não esteja reservado, não cancele
-            System.out.println("Este assento não está reservado.");
+                if(mapa_assentos[fila][cadeira] == 'E'){ //para estudante
+                    mapa_assentos[fila][cadeira] = '_';
+                    assentos_reservados --;
+                    assentos_disponiveis ++;
+                }
+                System.out.println("Reserva cancelada com sucesso.");
+            }else{ //caso não esteja reservado, não cancele
+                System.out.println("Este assento não está reservado.");
         }
     }
 
