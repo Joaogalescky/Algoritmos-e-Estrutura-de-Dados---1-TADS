@@ -30,6 +30,22 @@ public class Minado{
         Colocar_bombas();
     }
 
+    public static void Posicao_Fileiras(char[][] tabuleiro_visivel) {
+        System.out.print("  ");
+        for(int i = 0; i < tabuleiro_visivel[0].length; i++) {
+            System.out.printf("%2d ", i);
+        }
+        System.out.println();
+    
+        for(int i = 0; i < tabuleiro_visivel.length; i++) {
+            System.out.printf("%2d ", i);
+            for(int j = 0; j < tabuleiro_visivel[i].length; j++) {
+                System.out.printf("%2s ", tabuleiro_visivel[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
     public void Iniciar_tabuleiro(){
         //Sistema de repetição: criando tabuleiro contendo as bombas
         for(int i = 0; i < tabuleiro_tamanho; i++){
@@ -64,23 +80,23 @@ public class Minado{
 
     public void Tabuleiro_visivel(){
         System.out.println("Tabuleiro:");
-        //Sistema de repetição: criando tabuleiro visivel ao usuário
-        for(int i = 0; i < tabuleiro_tamanho; i++){
-            for(int j = 0; j < tabuleiro_tamanho; j++){
-                System.out.print(tabuleiro_visivel[i][j] + " ");
-            }
-            System.out.println();
-        }
+        Posicao_Fileiras(tabuleiro_visivel); 
     }
 
     public void Jogar(){
         Scanner entrada = new Scanner(System.in);
         int linha, coluna;
+        char acao;
 
-        while(situacao_do_jogo){
+        while (situacao_do_jogo){
             Tabuleiro_visivel();
+
+            //Escolher se quer jogar uma posicao ou se quer marcar
+            System.out.print("Digite a ação (J para jogar, M para marcar): ");
+            acao = entrada.next().toUpperCase().charAt(0);
+
             //(tabuleiro_tamanho - 1) -> vai indicar o tamanho para limitar o espaço de jogo do usuário nas linhas e colunas
-            System.out.print("Digite a linha (0 a " + (tabuleiro_tamanho - 1) + "): "); 
+            System.out.print("Digite a linha (0 a " + (tabuleiro_tamanho - 1) + "): ");
             linha = entrada.nextInt();
 
             System.out.print("Digite a coluna (0 a " + (tabuleiro_tamanho - 1) + "): ");
@@ -91,15 +107,29 @@ public class Minado{
                 continue;
             }
 
-            if(tabuleiro[linha][coluna] == '*'){ //Se nas posições escolhidas tenha uma bomba, ative o sinalizador
-                System.out.println("Você perdeu! Uma bomba explodiu.");
-                situacao_do_jogo = false;
+            if(acao == 'J'){
+                if(tabuleiro[linha][coluna] == '*'){ //Se nas posições escolhidas tenha uma bomba, ative o sinalizador
+                    System.out.println("Você perdeu! Uma bomba explodiu.");
+                    situacao_do_jogo = false;
+                }else{
+                    Descobrir_celula(linha, coluna);
+                    Fim_de_jogo();
+                }
+            }else if (acao == 'M'){
+                Marcar_celula(linha, coluna);
             }else{
-                Descobrir_celula(linha, coluna);
-                Fim_de_jogo();
+                System.out.println("Ação inválida. Tente novamente.");
             }
         }
         entrada.close();
+    }
+
+    public void Marcar_celula(int linha, int coluna) {
+        if (tabuleiro_visivel[linha][coluna] == '-') {
+            tabuleiro_visivel[linha][coluna] = 'M'; // Marcar a célula
+        } else if (tabuleiro_visivel[linha][coluna] == 'M') {
+            tabuleiro_visivel[linha][coluna] = '-'; // Desmarcar a célula
+        }
     }
 
     public void Descobrir_celula(int linha, int coluna){
