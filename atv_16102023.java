@@ -1,7 +1,9 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-//Atividade Prefixo
+//https://panda.ime.usp.br/algoritmos/static/eps/ep6/parted/parted-polonesa.html#:~:text=A%20nota%C3%A7%C3%A3o%20Polonesa%20(reversa)%20ou,express%C3%B5es%20em%20linguagens%20de%20programa%C3%A7%C3%A3o.
+//Atividade Posfixada - Notação polonesa reversa
+
 class atv_16102023{
     public static void main(String[] args){
         Stack<Integer> pilha = new Stack<Integer>();

@@ -2,6 +2,16 @@
 //Busca Binaria Rec em Vetor
 //Busca Binaria em Vetor
 
+/*Links binario
+https://www.ime.usp.br/~pf/algoritmos/aulas/bubi.html
+https://pt.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search#:~:text=A%20busca%20bin%C3%A1ria%20%C3%A9%20um,localiza%C3%A7%C3%B5es%20poss%C3%ADveis%20a%20apenas%20uma.
+*/
+
+/*Links linear
+https://www.blogcyberini.com/2017/09/busca-linear.html
+https://pt.wikipedia.org/wiki/Busca_linear
+*/
+
 import java.util.Scanner;
 
 class atv_17102023{
@@ -41,7 +51,14 @@ class atv_17102023{
     }
 
 //Busca linear
-
+    public buscaLinear(int[] valores, int x){
+        for( i = 0; i < valores.length; i ++){
+            if(valores[i] == (x){
+                return i;
+            })
+        }
+        return - 1;
+    }
 
     public static void main(String [] args){
 
