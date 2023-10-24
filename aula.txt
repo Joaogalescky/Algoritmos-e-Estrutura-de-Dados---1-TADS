@@ -1,0 +1,7 @@
+Comandos de criptografia e de busca:
+md5sum
+sha
+
+Link:
+https://www.devmedia.com.br/como-funciona-a-criptografia-hash-em-java/31139
+https://pt.stackoverflow.com/questions/204335/criptografar-senha-em-java-com-hash-sha256
