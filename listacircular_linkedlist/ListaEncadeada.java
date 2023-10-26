@@ -1,13 +1,17 @@
+package listacircular_linkedlist;
+
 import java.util.LinkedList;
 /* LinkedList - Explicação
-Uma lista encadeada ou lista ligada é uma estrutura de dados linear e dinâmica. Ela é composta por várias células que estão interligadas através de ponteiros, ou seja, cada célula possui um ponteiro que aponta para o endereço de memória da próxima célula
+Uma lista encadeada ou lista ligada é uma estrutura de dados linear e dinâmica.
+Ela é composta por várias células que estão interligadas através de ponteiros, ou seja, cada célula possui um ponteiro que aponta para o endereço de memória da próxima célula
 */
 import java.util.Scanner;
 
-public class LinkedList{
+public class ListaEncadeada{
 
-public static Scanner entrada;
-    public static void LinkedList() {
+    public static Scanner entrada;
+
+    public static void lista() {
         // biblioteca LinkedList
         int i;
         LinkedList<Integer> valores;
