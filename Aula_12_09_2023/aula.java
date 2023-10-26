@@ -19,44 +19,35 @@ https://receitasdecodigo.com.br/java/como-ler-arquivo-texto-em-java
 */
 
 class aula{
-     public static void teste(String[] args) {
+     public static void main(String[] args) {
         
         FileReader ler_arquivo;
         File arquivo;
         Scanner entrada;
-        int caracter_lido, i;
+        int caracter_lido, i = 0;
         char c;
 
         try{
-            arquivo = new File("texto.txt");
+            arquivo = new File("C:\\Users\\Skyfall_jack\\Desktop\\Algoritmos-e-Estrutura-de-Dados---1-TADS-2023\\Aula_12_09_2023\\texto.txt");
             entrada = new Scanner (arquivo);
 
-            ler_arquivo = new FileReader("/home/aluno/Área de Trabalho/Aula_12_09_2023/texto.txt");
+            ler_arquivo = new FileReader("C:\\Users\\Skyfall_jack\\Desktop\\Algoritmos-e-Estrutura-de-Dados---1-TADS-2023\\Aula_12_09_2023\\texto.txt");
             caracter_lido = ler_arquivo.read();
 
             while(caracter_lido != -1){
                 c = (char) caracter_lido;
-                //Fazer um contador (i) de caracter (tenho que ter uma string para utilizar em uma repetição, e depois, converter para char para checar as letras dentro do for)
-                //for (int j = 0; j < )
+                if(c == 'a' || c == 'A'){
+                    i ++;
+                }
                 caracter_lido = ler_arquivo.read();
             }
             ler_arquivo.close();
 
-            System.out.println("A letra 'a' apareceu: %d\n", i);
+            System.out.printf("A letra 'a' apareceu: %d\n", i);
 
         } catch (Exception e){
             System.out.println(e);
         }
     }
-
-
-
-    //public static void main(String args[]) throws FileNotFoundException {
-    //     Scanner scanner = new Scanner(new FileReader("/home/aluno/Área de Trabalho/Aula_12_09_2023/texto.txt")).useDelimiter("\\n");
-    //     System.out.println("----------------------------------------------------------------------");
-    //     while (scanner.hasNext()) {
-    //         System.out.println( scanner.next() );
-    //     }
-    // }
 }
 

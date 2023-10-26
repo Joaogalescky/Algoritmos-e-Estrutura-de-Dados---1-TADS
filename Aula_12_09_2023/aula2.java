@@ -1,3 +1,5 @@
+package Aula_12_09_2023;
+
 public class aula2 {
     //Resolução do professor sobre a atividade, arquivo "Aula"
     public static void main(String[] args) {
