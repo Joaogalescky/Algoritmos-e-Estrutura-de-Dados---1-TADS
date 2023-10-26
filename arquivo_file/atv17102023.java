@@ -14,7 +14,7 @@ https://www.blogcyberini.com/2017/09/busca-linear.html
 https://pt.wikipedia.org/wiki/Busca_linear
 */
 
-public class atv_17102023{
+public class atv17102023{
 
     //Busca binaria recursiva
     public static Object buscaBinarioRec(int[] valores, int e){
