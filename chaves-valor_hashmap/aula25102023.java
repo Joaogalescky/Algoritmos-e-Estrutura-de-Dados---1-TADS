@@ -1,6 +1,4 @@
 import java.util.HashMap;
-import java.io.File;
-import java.io.FileReader;
 
 /*Atividade em sala de aula
 Fazer um programa que leia uma entrada de strings, a separe, e faça a contagem de quantas vezes ela apareceu.
