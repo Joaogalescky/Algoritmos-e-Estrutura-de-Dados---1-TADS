@@ -1,5 +1,3 @@
-package arquivo_file;
-
 //Busca Linear em Vetor
 //Busca Binaria Rec em Vetor
 //Busca Binaria em Vetor
@@ -82,6 +80,8 @@ public class atv17102023{
         // Teste da busca binária recursiva
         boolean encontrouRec = (boolean) buscaBinarioRec(array, busca);
         System.out.println("Busca binária recursiva: " + (encontrouRec ? "Encontrou" : "Não encontrou"));
+        //? --> operador ternário, forma consisa de expressar uma estrutura condicional.
+        //: --> operador ternário, ----------------------------------------------------.
 
         // Teste da busca binária não recursiva
         int indiceBinario = buscaBinaria(array, busca);
