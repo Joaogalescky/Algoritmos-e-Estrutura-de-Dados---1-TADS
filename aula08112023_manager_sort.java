@@ -1,11 +1,5 @@
 public class aula08112023_manager_sort{
 
-    public static void troca(int []vetor, int pos_a, int pos_b){
-        int aux = vetor[pos_b];
-        vetor[pos_b] = vetor[pos_a];
-        vetor[pos_a] = aux;
-    }
-
     public static int[] merge (int[] vetor_a, int[] vetor_b){
         int[] res = new int[vetor_a.length + vetor_b.length];
 
