@@ -57,9 +57,9 @@ public class aula21112023 {
         int[] VR, VE, VD;
         int MEIO;
 
-        if(< 1){
+        // if(< 1){
 
-        }
+        // }
 
         MEIO = V.length / 2;
         VE = vetor_sub(V, 0, MEIO);
@@ -83,21 +83,21 @@ public class aula21112023 {
     }
 
     public static void main(String[] args) {
-        // int[] V1 = {5, 7 , 9, 11};
-        // int[] V2 = {6, 10, 12, 15};
-        // int[] VV;
-        // int[] res = merge(V1, V2);
+        int[] V1 = {5, 7 , 9, 11};
+        int[] V2 = {6, 10, 12, 15};
+        int[] VV;
+        int[] res = merge(V1, V2);
 
-        // for(int i = 0; i < res.length; i ++){
-        //     System.out.printf("%d ", res[i]);
-        //     System.out.println();
-        // }
+        for(int i = 0; i < res.length; i ++){
+            System.out.printf("%d ", res[i]);
+            System.out.println();
+        }
 
-        int i;
-        int[] V1 = {42, 13, 27, 9, 2, 55, 22, 94, 1, 200, 0, 300};
-        int[] VR = mergeSort();
+        // int i;
+        // int[] V1 = {42, 13, 27, 9, 2, 55, 22, 94, 1, 200, 0, 300};
+        // int[] VR = mergeSort();
 
-        VV = mergeSort(V1);
+        // VV = mergeSort(V1);
         
     }
 }
