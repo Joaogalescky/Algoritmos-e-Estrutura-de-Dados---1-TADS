@@ -234,6 +234,65 @@ public class Revisao_Prova_4ºBimestre {
      * Desempenho pode degradar para conjuntos de dados quase ordenados.
      * Não é estável.
     */
+
+    /* Como escolher o pivô?
+     * 
+     Pivô no meio:
+     * Escolhe o elemento do meio do array como pivô;
+     * Implementação:
+     - 'int pivot = array[(low + high) / 2];'
+     * ----------------
+     Pivô aleatório:
+     * Escolhe um elemento aleatório do array como pivô;
+     * Implementação:
+     - 'int randomIndex = low + new Random().nextInt(high - low + 1)'
+     - 'int pivot = array[randomIndex]';
+     * ----------------
+     Pivô do primeiro, do meio e do último:
+     * Escolhe o elemento do meio entre o primeiro, o do meio e o último como pivô.
+     * Implementação:
+     - int middleIndex = low + (high - low) / 2;
+     - int[] candidates = {array[low], array[middleIndex], array[high]};
+     - Arrays.sort(candidates);
+     - int pivot = candidates[1]; // Elemento do meio após ordenação
+     * ----------------
+     Pivô de valor fixo (Fixed Pivot):
+     * Escolhe um valor fixo como pivô (por exemplo, o primeiro ou o último elemento).
+     * Implementação:
+     - int pivot = array[low]; ou int pivot = array[high];
+    */
+
+    /* Melhores e Piores Cenários para a Escolha do Pivô:
+     Melhores Cenários:
+     * Quando o pivô escolhido divide o array aproximadamente ao meio em cada chamada recursiva.
+     * Isso ocorre, por exemplo, no caso do pivô aleatório ou do pivô do meio.
+     * ----------------
+     Piores Cenários:
+     * Quando o pivô escolhido resulta em divisões desequilibradas, levando a muitas chamadas recursivas.
+     * No pior caso, a escolha de um pivô fixo em um array ordenado ou quase ordenado pode resultar em um desempenho quadrático.
+     * ----------------
+     Dicas:
+     Randomização:
+     * A escolha do pivô aleatório ajuda a evitar casos extremos e torna o QuickSort mais robusto contra dados de entrada específicos.
+     * ----------------
+     Median of Three:
+     * A estratégia de escolher o pivô como o elemento do meio entre o primeiro, o do meio e o último é uma tentativa de balancear o particionamento.
+     * ----------------
+     Implementação Híbrida:
+     * Alguns algoritmos de ordenação, como o introsort, usam uma estratégia híbrida que muda para um algoritmo diferente (por exemplo, HeapSort) quando o QuickSort atinge um nível de recursão máximo.
+    */
+
+    /*Passos do Quicksort:
+     Escolha do Pivô:
+     * Um elemento é escolhido como pivô. Existem várias estratégias para a escolha do pivô, como pegar o primeiro, o último, o do meio ou usar uma abordagem mais sofisticada.
+     * ----------------
+     Particionamento:
+     * Reorganize os elementos de modo que os elementos menores que o pivô estejam à esquerda e os elementos maiores estejam à direita. O pivô está agora na posição correta.
+     * ----------------
+     Recursão:
+     * Aplique recursivamente o Quicksort às sublistas à esquerda e à direita do pivô até que toda a lista esteja ordenada.
+    */
+
     public static void quickSort(int[] vetor, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(vetor, low, high);
@@ -270,6 +329,16 @@ public class Revisao_Prova_4ºBimestre {
      * ----------------
      Desvantagens:
      * Requer espaço adicional para o processo de mesclagem.
+     * ----------------
+     * Passos do Merge Sort:
+     * Divisão:
+     * A lista não ordenada é dividida pela metade recursivamente até que sub-listas de tamanho 1 sejam alcançadas.
+     * ----------------
+     * Ordenação:
+     * As sub-listas são ordenadas de maneira recursiva usando o mesmo algoritmo de Merge Sort.
+     * ----------------
+     * Mesclagem:
+     * As sub-listas ordenadas são mescladas para criar uma lista única e ordenada. A mesclagem é realizada comparando os elementos das sub-listas e organizando-os em ordem crescente.
     */
     public static void mergeSort(int[] vetor, int l, int r) {
         if (l < r) {
@@ -353,6 +422,69 @@ public class Revisao_Prova_4ºBimestre {
         return max;
     }
 
+    //RadixSort
+    /* O Radix Sort é um algoritmo de ordenação que funciona classificando os elementos com base em suas representações digitais. Ele é especialmente útil para ordenar inteiros ou strings de tamanho fixo. O algoritmo funciona ordenando os elementos primeiro pelo dígito menos significativo e depois para os dígitos mais significativos.
+     * ----------------
+     Passos do Radix Sort:
+     Identificação do Número Máximo de Dígitos:
+     * Determine o número máximo de dígitos nos elementos a serem ordenados. Isso ajuda a determinar quantas vezes o processo de ordenação deve ser repetido.
+     * ----------------
+     Iterações para Cada Dígito:
+     * Para cada dígito, do menos significativo para o mais significativo, execute uma etapa de ordenação. Pode-se usar um algoritmo de ordenação estável, como o Counting Sort, para essa etapa.
+     * ----------------
+     Ordenação por Dígito:
+     * Organize os elementos com base no dígito atual durante cada iteração. Isso cria uma ordenação parcial, que é estável.
+     * ----------------
+     Recombinação dos Elementos:
+     * Recomponha os elementos na ordem em que foram classificados nas iterações anteriores.
+     * ----------------
+     Complexidade:
+     * A complexidade de tempo do Radix Sort é O(nk), onde n é o número de elementos e k é o número de dígitos.
+     * O Radix Sort é eficiente para ordenar grandes quantidades de dados, especialmente quando o número de dígitos é pequeno em comparação com o número total de elementos.
+     * ----------------
+     Observações:
+     * O Radix Sort pode ser aplicado tanto a inteiros quanto a strings, desde que o tamanho das strings seja fixo.
+     * A escolha do algoritmo de ordenação usado para cada passo depende do contexto. O Counting Sort é comumente usado devido à sua eficiência em ordenar números em um intervalo pequeno.
+    */
+
+    public static void radixSort(int[] arr) {
+        // Encontrar o número máximo para determinar o número de dígitos
+        int max = Arrays.stream(arr).max().getAsInt();
+        
+        // Fazendo a ordenação por dígito
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort_Radix(arr, exp);
+        }
+    }
+
+    private static void countingSort_Radix(int[] arr, int exp) {
+        int n = arr.length;
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        // Inicializando o array de contagem
+        Arrays.fill(count, 0);
+
+        // Contagem de ocorrências de cada dígito em count[]
+        for (int i = 0; i < n; i++) {
+            count[(arr[i] / exp) % 10]++;
+        }
+
+        // Atualização de count[i] para armazenar a posição atual do dígito no output[]
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        // Construção do array de saída
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        // Copiando o array de saída para arr[] para refletir a ordenação
+        System.arraycopy(output, 0, arr, 0, n);
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Revisão para a Prova do 4º Bimestre - 1º TADSS - 2023");
@@ -400,5 +532,10 @@ public class Revisao_Prova_4ºBimestre {
         System.out.println("Vetor antes do Counting Sort: " + Arrays.toString(vetorCountingSort));
         int[] vetorCountingSorted = countingSort(vetorCountingSort);
         System.out.println("Vetor após Counting Sort: " + Arrays.toString(vetorCountingSorted));
+
+        // Exemplo de ordenação usando Radix Sort
+        System.out.println("Array antes do Radix Sort: " + Arrays.toString(vetor));
+        radixSort(vetor);
+        System.out.println("Array após o Radix Sort: " + Arrays.toString(vetor));
     }
 }
