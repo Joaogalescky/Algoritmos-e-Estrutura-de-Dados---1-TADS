@@ -56,30 +56,30 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    private static void calcTemp(String algoritmo, int[] vetor) {
+    public static void calcTemp(String algoritmo, int[] vetor) {
         long tempoInicio = System.currentTimeMillis();
 
         // Escolher o algoritmo de ordenação apropriado
         switch (algoritmo) {
-            case "Bubble Sort":
+            case "BubbleSort":
                 bubbleSort(vetor);
                 break;
-            case "Insertion Sort":
+            case "InsertionSort":
                 insertionSort(vetor);
                 break;
-            case "Selection Sort":
+            case "SelectionSort":
                 selectionSort(vetor);
                 break;
-            case "Merge Sort":
+            case "MergeSort":
                 mergeSort(vetor);
                 break;
-            case "Counting Sort":
+            case "CountingSort":
                 countingSort(vetor);
                 break;
-            case "Radix Sort":
+            case "RadixSort":
                 radixSort(vetor);
                 break;
-            case "Quick Sort":
+            case "QuickSort":
                 quickSort(vetor);
                 break;
             default:
@@ -94,35 +94,55 @@ public class Algoritmo_Ordenacao {
 
     // Implementações dos algoritmos de ordenação
 
-    private static void bubbleSort(int[] vetor) {
-        // Implementação do Bubble Sort
+    public static void troca(int []vetor, int pos_a, int pos_b){
+        int aux = vetor[pos_b];
+        vetor[pos_b] = vetor[pos_a];
+        vetor[pos_a] = aux;
     }
 
-    private static void insertionSort(int[] vetor) {
+    public static void bubbleSort(int[] vetor) {
+        // Implementação do Bubble Sort
+
+        //entrada
+        int[] valores = new int[]{94, 27, 32, 46, 8, 0};
+        int[] resultados = new int[valores.length];
+        int i, j, aux;
+    
+        //processamento
+        for(i = 0; i < valores.length - 1; i++){
+            for(j = 0; j < valores.length - 1 - i; j++){
+                if(valores[j] > valores[j + 1]){
+                    troca(valores, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSort(int[] vetor) {
         // Implementação do Insertion Sort
     }
 
-    private static void selectionSort(int[] vetor) {
+    public static void selectionSort(int[] vetor) {
         // Implementação do Selection Sort
     }
 
-    private static void mergeSort(int[] vetor) {
+    public static void mergeSort(int[] vetor) {
         // Implementação do Merge Sort
     }
 
-    private static void countingSort(int[] vetor) {
+    public static void countingSort(int[] vetor) {
         // Implementação do Counting Sort
     }
 
-    private static void radixSort(int[] vetor) {
+    public static void radixSort(int[] vetor) {
         // Implementação do Radix Sort
     }
 
-    private static void quickSort(int[] vetor) {
+    public static void quickSort(int[] vetor) {
         // Implementação do Quick Sort
     }
 
-    private static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
+    public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
         int[] vetor = new int[tamanho];
         Random aleatorio = new Random();
 
