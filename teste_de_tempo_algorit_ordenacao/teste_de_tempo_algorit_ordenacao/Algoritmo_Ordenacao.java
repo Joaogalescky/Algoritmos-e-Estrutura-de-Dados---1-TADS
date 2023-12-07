@@ -116,7 +116,10 @@ public class Algoritmo_Ordenacao {
                 System.out.println("Algoritmo desconhecido");
         }
         long tempoFim = System.nanoTime();
-        double tempoDecorrido = (tempoFim - tempoInicio) / 1000.0;
+        double tempoDecorrido = (tempoFim - tempoInicio) / 1e9; //Convertendo para segundos
+
+        //Limitando as casas decimais para 4
+        tempoDecorrido = Math.round(tempoDecorrido * 10000.0) / 10000.0;
 
         System.out.println(algoritmo + " - Tamanho: " + vetor.length + " - Tempo: " + tempoDecorrido + " segundos");
     }
