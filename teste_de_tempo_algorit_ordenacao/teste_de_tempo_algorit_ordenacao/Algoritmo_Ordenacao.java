@@ -24,39 +24,39 @@
 package teste_de_tempo_algorit_ordenacao;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Algoritmo_Ordenacao {
+
     public static void main(String[] args) {
         int[] vetorTamanho = {100, 1000, 10000, 100000, 1000000, 10000000};
 
         for (int tamanho : vetorTamanho) {
-            //Gerar conjuntos de dados
-            int[] vetorRandomico = geradorRandomVetor(tamanho, 0, 10000);
-            int[] vetorRandomicoGrande = geradorRandomVetor(tamanho, 0, Integer.MAX_VALUE);
+            int[] vetorRandomico = geradorRandomVetor(tamanho, 0, 100);
 
-            //Medir o tempo para ordenação usando diferentes algoritmos
-            calcTemp("Bubble Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Insertion Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Selection Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Merge Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Counting Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Radix Sort", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Quick Sort", Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
 
-            calcTemp("Bubble Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Insertion Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Selection Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Merge Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Counting Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Radix Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
-            calcTemp("Quick Sort (Large)", Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
 
             System.out.println();
         }
     }
 
-    public static void calcTemp(String algoritmo, int[] vetor) {
+    public static void calcTemp(int[] vetor) {
         long tempoInicio = System.currentTimeMillis();
+        Scanner entrada = new Scanner(System.in);
 
         System.out.println("\nTeste de tempo de resposta dos algoritmos de ordenação");
         System.out.println("Escolha uma opção:");
@@ -66,10 +66,10 @@ public class Algoritmo_Ordenacao {
         System.out.println("4. mergeSort");
         System.out.println("5. countingSort");
         System.out.println("6. radixSort");
+        System.out.println("7. quickSort");
 
-        algoritmo = entrada.nextInt();
-        
-        //Menu para escolher o algoritmo de ordenação
+        int algoritmo = entrada.nextInt();
+
         switch (algoritmo) {
             case 1: //"BubbleSort"
                 bubbleSort(vetor);
@@ -93,9 +93,8 @@ public class Algoritmo_Ordenacao {
                 quickSort(vetor);
                 break;
             default:
-            System.out.println("Algoritmo desconhecido");
+                System.out.println("Algoritmo desconhecido");
         }
-
         long tempoFim = System.currentTimeMillis();
         double tempoDecorrido = (tempoFim - tempoInicio) / 1000.0;
 
@@ -108,16 +107,16 @@ public class Algoritmo_Ordenacao {
         //Implementação do Bubble Sort
 
         //Variaveis
-        int i, j, valores;
+        int i, j, valores, temp;
 
         //Entrada
         valores = vetor.length;
+        temp = 0;
     
         //Processamento
         for(i = 0; i < valores - 1; i++){
             for(j = 0; j < valores - 1 - i; j++){
                 if(vetor[j] > vetor[j + 1]){
-                    int aux = vetor[j];
                     vetor[j] = vetor[j + 1];
                     vetor[j + 1] = temp;
                 }
@@ -179,9 +178,9 @@ public class Algoritmo_Ordenacao {
         //Implementação do Merge Sort
     
         if(vetor.length > 1){
-            int meio;
-            int[] esquerda = Vetor.copiaAlcance(vetor, 0, meio);
-            int[] direita = Vetor.copiaAlcance(vetor, meio, vetor.length);
+            int meio = vetor.length / 2;
+            int[] esquerda = Arrays.copyOfRange(vetor, 0, meio);
+            int[] direita = Arrays.copyOfRange(vetor, meio, vetor.length);
 
             //Processamento
             mergeSort(esquerda);
@@ -197,7 +196,7 @@ public class Algoritmo_Ordenacao {
 
         //Entrada
         i = 0;
-        i = 0;
+        j = 0;
         k = 0;
 
         //Processamento
@@ -209,7 +208,7 @@ public class Algoritmo_Ordenacao {
             }
         }
 
-        while(i < esquerda.left){
+        while(i < esquerda.length){
             vetor[k++] = esquerda[i++];
         }
 
@@ -231,13 +230,16 @@ public class Algoritmo_Ordenacao {
     }
 
     public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
+        if(valorMinimo >= valorMaximo){
+            throw new IllegalArgumentException("valorMinimo deve ser menor que valorMaximo");
+        }
+
         int[] vetor = new int[tamanho];
         Random aleatorio = new Random();
 
-        for (int i = 0; i < tamanho; i++) {
+        for(int i = 0; i < tamanho; i++){
             vetor[i] = aleatorio.nextInt(valorMaximo - valorMinimo + 1) + valorMinimo;
         }
-
         return vetor;
     }
 }
