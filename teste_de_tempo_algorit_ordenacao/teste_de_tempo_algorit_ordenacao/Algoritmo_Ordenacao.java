@@ -21,20 +21,33 @@
  - código com os algoritmos de ordenação e a medição de tempo
 */
 
+//pacote
 package teste_de_tempo_algorit_ordenacao;
+
+//bibliotecas importadas
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Algoritmo_Ordenacao {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        //vetor de teste de tempo de resposta
         int[] vetorTamanho = {100, 1000, 10000, 100000, 1000000, 10000000};
 
-        for (int tamanho : vetorTamanho) {
-            int[] vetorRandomico = geradorRandomVetor(tamanho, 0, 100);
+        //foreach
+        //for (int tamanho : vetorTamanho){
+        //O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido.
+        for (int i = 0; i < vetorTamanho.length; i++) { 
+            int tamanho = vetorTamanho[i];
+
+            int[] vetorRandomico = geradorRandomVetor(tamanho, 0, 100);//Para Testes, alterar o valorMaximo pelo valor do tamanho do vetorTamanho
 
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+            /* Arrays.copyOf:
+             Esse método pertence a classe 'java.util.Arrays', sendo usado para copiar um array e retornar outro. Esse que ele retorna é uma cópia do primeiro.
+             Util para criar uma cópia de uma matriz com um tamanho específico sem alterar a matriz original.
+            */
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
@@ -54,10 +67,15 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    public static void calcTemp(int[] vetor) {
+    public static void calcTemp(int[] vetor){
         long tempoInicio = System.currentTimeMillis();
+        //Da para substituir para nanoTime();
+        /*CurrentTimeMillis:
+         É um metodo que retorna a hora atual em millissegundos, um número (long) que representa a quantidade de milissegundos que se passou desde tal instante.
+        */
         Scanner entrada = new Scanner(System.in);
 
+        //Menu de seleção
         System.out.println("\nTeste de tempo de resposta dos algoritmos de ordenação");
         System.out.println("Escolha uma opção:");
         System.out.println("1. bubbleSort");
@@ -70,7 +88,7 @@ public class Algoritmo_Ordenacao {
 
         int algoritmo = entrada.nextInt();
 
-        switch (algoritmo) {
+        switch (algoritmo){
             case 1: //"BubbleSort"
                 bubbleSort(vetor);
                 break;
@@ -101,10 +119,11 @@ public class Algoritmo_Ordenacao {
         System.out.println(algoritmo + " - Tamanho: " + vetor.length + " - Tempo: " + tempoDecorrido + " segundos");
     }
 
-    //Implementações dos algoritmos de ordenação
+    //------------------------------------------
+    //Implementações dos algoritmos de ordenação:
+    //------------------------------------------
 
-    public static void bubbleSort(int[] vetor) {
-        //Implementação do Bubble Sort
+    public static void bubbleSort(int[] vetor){
 
         //Variaveis
         int i, j, valores, temp;
@@ -124,8 +143,7 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    public static void insertionSort(int[] vetor) {
-        //Implementação do Insertion Sort
+    public static void insertionSort(int[] vetor){
 
         //Variaveis
         int valores;
@@ -149,8 +167,7 @@ public class Algoritmo_Ordenacao {
 
     }
 
-    public static void selectionSort(int[] vetor) {
-        //Implementação do Selection Sort
+    public static void selectionSort(int[] vetor){
 
         //Variaveis
         int i, j, menorP, temp, valores;
@@ -174,13 +191,18 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    public static void mergeSort(int[] vetor) {
-        //Implementação do Merge Sort
-    
+    public static void mergeSort(int[] vetor){
+        
+        //Variaveis
+        intt meio;
+        int[] esquerda;
+        int[] direita;
+
+        //Processamento
         if(vetor.length > 1){
-            int meio = vetor.length / 2;
-            int[] esquerda = Arrays.copyOfRange(vetor, 0, meio);
-            int[] direita = Arrays.copyOfRange(vetor, meio, vetor.length);
+            meio = vetor.length / 2;
+            esquerda = Arrays.copyOfRange(vetor, 0, meio);
+            direita = Arrays.copyOfRange(vetor, meio, vetor.length);
 
             //Processamento
             mergeSort(esquerda);
@@ -189,7 +211,7 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    public static void merge(int[] vetor, int[] esquerda, int[] direita) {
+    public static void merge(int[] vetor, int[] esquerda, int[] direita){
         
         //Variaveis
         int i, j, k;
@@ -217,100 +239,165 @@ public class Algoritmo_Ordenacao {
         }
     }
 
-    public static void countingSort(int[] vetor) {
-        // Implementação do Counting Sort
-        int max = Arrays.stream(vetor).max().orElse(0);
-        int min = Arrays.stream(vetor).min().orElse(0);
+    public static void countingSort(int[] vetor){
 
-        int range = max - min + 1;
-        int[] count = new int[range];
-        int[] output = new int[vetor.length];
+        //Variaveis
+        int maximo, aux = 0, i;
+        int[] contadorVetor;
 
-        for (int i : vetor) {
-            count[i - min]++;
+        //Processamento
+        if (vetor == null || vetor.length <= 1) {
+            return; //Se o vetor for nulo ou tiver 1 elemento apenas, não a nada ser ordenado
+        }
+    
+        maximo = Arrays.stream(vetor).max().orElse(0);
+        contadorVetor = new int[maximo + 1];
+    
+            //Contagem das ocorrências de cada elemento no vetor
+        for (int n : vetor) {
+            contadorVetor[n]++;
+        }
+    
+            //Reconstrução do vetor já ordenado
+        for (i = 0; i < countArray.length; i++) {
+            while (contadorVetor[i] > 0) {
+                vetor[aux++] = i;
+                contadorVetor[i]--;
+            }
         }
 
-        for (int i = 1; i < range; i++) {
-            count[i] += count[i - 1];
+        /* Arrays.stream:
+         É um metodo que pertence à classe 'java.util.Arrays' também. Utilizado para converter um array em um fluxo(stream).
+         Permite utilizar para operações de fluxo para processar os elementos da matriz de maneira mais concisa e funcional.
+        */
+        /* Como funciona esse trecho de código:
+         Portanto, .max() ou .min() são operações de fluxo que retornam um Optional<T> representando o valor máximo ou mínimo no fluxo, respectivamente. O método .orElse(defaultValue) é usado para fornecer um valor padrão caso o valor não esteja presente. 
+        */
+
+        /*Outro código
+        //Variaveis
+        int maximo, minimo, alcance;
+        int[] contador;
+        int[] saida;
+
+        //Processamento
+        maximo = Arrays.stream(vetor).max().orElse(0);
+        minimo = Arrays.stream(vetor).min().orElse(0);
+
+        alcance = maximo - minimo + 1;
+        contador = new int[alcance];
+        saida = new int[vetor.length];
+
+        for (int i : vetor){
+            contador[i - minimo]++;
         }
 
-        for (int i = vetor.length - 1; i >= 0; i--) {
-            output[count[vetor[i] - min] - 1] = vetor[i];
-            count[vetor[i] - min]--;
+        for (int i = 1; i < alcance; i++){
+            contador[i] += contador[i - 1];
         }
 
-        System.arraycopy(output, 0, vetor, 0, vetor.length);
+        for (int i = vetor.length - 1; i >= 0; i--){
+            saida[contador[vetor[i] - minimo] - 1] = vetor[i];
+            contador[vetor[i] - minimo]--;
+        }
+
+        //Saida
+        System.arraycopy(saida, 0, vetor, 0, vetor.length);
+        */
     }
 
-    public static void radixSort(int[] vetor) {
-        //Implementação do Radix Sort
-        int max = Arrays.stream(vetor).max().orElse(0);
-        for (int exp = 1; max / exp > 0; exp *= 10) {
+    public static void radixSort(int[] vetor){
+
+        //Variaveis
+        int maximo;
+        int exp;
+
+        //Processamento
+        maximo = Arrays.stream(vetor).max().orElse(0);
+        for (exp = 1; maximo / exp > 0; exp *= 10){
             countingSortRadix(vetor, exp);
         }
     }
+    
+    private static void countingSortRadix(int[] vetor, int exp){
 
-   private static void countingSortRadix(int[] vetor, int exp) {
-        int n = vetor.length;
-        int[] output = new int[n];
-        int[] count = new int[10];
+        //Variaveis
+        int n;
+        int[] saida;
+        int[] contador;
 
-        Arrays.fill(count, 0);
+        //Entrada
+        n = vetor.length;
+        saida = new int[n];
+        contador = new int[10];
+        Arrays.fill(contador, 0);
 
-        for (int i = 0; i < n; i++) {
-            count[(vetor[i] / exp) % 10]++;
+        //Processamento
+        for (int i = 0; i < n; i++){
+            contador[(vetor[i] / exp) % 10]++;
         }
 
-        for (int i = 1; i < 10; i++) {
-            count[i] += count[i - 1];
+        for (int i = 1; i < 10; i++){
+            contador[i] += contador[i - 1];
         }
 
-        for (int i = n - 1; i >= 0; i--) {
-            output[count[(vetor[i] / exp) % 10] - 1] = vetor[i];
-            count[(vetor[i] / exp) % 10]--;
+        for (int i = n - 1; i >= 0; i--){
+            saida[contador[(vetor[i] / exp) % 10] - 1] = vetor[i];
+            contador[(vetor[i] / exp) % 10]--;
         }
 
-        System.arraycopy(output, 0, vetor, 0, n);
+        System.arraycopy(saida, 0, vetor, 0, n);
     }
 
-    public static void quickSort(int[] vetor) {
-        //Implementação do Quick Sort
+    public static void quickSort(int[] vetor){
         quickSortRecursivo(vetor, 0, vetor.length - 1);
     }
+    
+    private static void quickSortRecursivo(int[] vetor, int inicio, int fim){
 
-   private static void quickSortRecursivo(int[] vetor, int inicio, int fim) {
-      if (inicio < fim) {
-          int indiceParticao = particao(vetor, inicio, fim);
+        //Variaveis
+        int indiceParticao;
 
-          quickSortRecursivo(vetor, inicio, indiceParticao - 1);
-          quickSortRecursivo(vetor, indiceParticao + 1, fim);
-      }
-  }
+        //Processamento
+        if(inicio < fim){
+            indiceParticao = particao(vetor, inicio, fim);
+            
+            quickSortRecursivo(vetor, inicio, indiceParticao - 1);
+            quickSortRecursivo(vetor, indiceParticao + 1, fim);
+        }
+    }
+    
+    private static int particao(int[] vetor, int inicio, int fim){
+        //Variaveis
+        int pivo = vetor[fim];
+        int i = inicio - 1, j;
+        
+        //Processamento
+        for (j = inicio; j < fim; j++){
+            if (vetor[j] <= pivo){
+                i++;
+                trocar(vetor, i, j);
+            }
+        }
+        trocar(vetor, i + 1, fim);
+        return i + 1;
+    }
 
-  private static int particao(int[] vetor, int inicio, int fim) {
-      int pivo = vetor[fim];
-      int i = inicio - 1;
+    private static void trocar(int[] vetor, int i, int j){
 
-      for (int j = inicio; j < fim; j++) {
-          if (vetor[j] <= pivo) {
-              i++;
-              trocar(vetor, i, j);
-          }
-      }
+        //Variaveis
+        int temp;
+        
+        //Processamento
+        temp = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = temp;
+    }
 
-      trocar(vetor, i + 1, fim);
-      return i + 1;
-  }
-
-  private static void trocar(int[] vetor, int i, int j) {
-      int temp = vetor[i];
-      vetor[i] = vetor[j];
-      vetor[j] = temp;
-  }
-
-    public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
+    public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo){
         if(valorMinimo >= valorMaximo){
             throw new IllegalArgumentException("valorMinimo deve ser menor que valorMaximo");
+            //Caso não atendida, lançar uma exceção indicando que há um argumento que não está dentro do intervalo válido esperado. 
         }
 
         int[] vetor = new int[tamanho];
