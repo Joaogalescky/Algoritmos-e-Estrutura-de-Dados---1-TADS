@@ -218,16 +218,95 @@ public class Algoritmo_Ordenacao {
     }
 
     public static void countingSort(int[] vetor) {
-        //Implementação do Counting Sort
+        // Implementação do Counting Sort
+        int max = Arrays.stream(vetor).max().orElse(0);
+        int min = Arrays.stream(vetor).min().orElse(0);
+
+        int range = max - min + 1;
+        int[] count = new int[range];
+        int[] output = new int[vetor.length];
+
+        for (int i : vetor) {
+            count[i - min]++;
+        }
+
+        for (int i = 1; i < range; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = vetor.length - 1; i >= 0; i--) {
+            output[count[vetor[i] - min] - 1] = vetor[i];
+            count[vetor[i] - min]--;
+        }
+
+        System.arraycopy(output, 0, vetor, 0, vetor.length);
     }
 
     public static void radixSort(int[] vetor) {
         //Implementação do Radix Sort
+        int max = Arrays.stream(vetor).max().orElse(0);
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSortRadix(vetor, exp);
+        }
+    }
+
+   private static void countingSortRadix(int[] vetor, int exp) {
+        int n = vetor.length;
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        Arrays.fill(count, 0);
+
+        for (int i = 0; i < n; i++) {
+            count[(vetor[i] / exp) % 10]++;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(vetor[i] / exp) % 10] - 1] = vetor[i];
+            count[(vetor[i] / exp) % 10]--;
+        }
+
+        System.arraycopy(output, 0, vetor, 0, n);
     }
 
     public static void quickSort(int[] vetor) {
         //Implementação do Quick Sort
+        quickSortRecursivo(vetor, 0, vetor.length - 1);
     }
+
+   private static void quickSortRecursivo(int[] vetor, int inicio, int fim) {
+      if (inicio < fim) {
+          int indiceParticao = particao(vetor, inicio, fim);
+
+          quickSortRecursivo(vetor, inicio, indiceParticao - 1);
+          quickSortRecursivo(vetor, indiceParticao + 1, fim);
+      }
+  }
+
+  private static int particao(int[] vetor, int inicio, int fim) {
+      int pivo = vetor[fim];
+      int i = inicio - 1;
+
+      for (int j = inicio; j < fim; j++) {
+          if (vetor[j] <= pivo) {
+              i++;
+              trocar(vetor, i, j);
+          }
+      }
+
+      trocar(vetor, i + 1, fim);
+      return i + 1;
+  }
+
+  private static void trocar(int[] vetor, int i, int j) {
+      int temp = vetor[i];
+      vetor[i] = vetor[j];
+      vetor[j] = temp;
+  }
 
     public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
         if(valorMinimo >= valorMaximo){
