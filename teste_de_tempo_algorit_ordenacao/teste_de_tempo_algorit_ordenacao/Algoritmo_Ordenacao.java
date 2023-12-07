@@ -33,10 +33,11 @@ public class Algoritmo_Ordenacao {
 
     public static void main(String[] args){
         //Vetor de teste de tempo de resposta
-        int[] vetorTamanho = {100, 1000, 10000, 100000, 1000000, 10000000};
+        int[] vetorTamanho = {100};
 
         /* for(int tamanho : vetorTamanho){
-         O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido.
+         O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido
+         Neste contexto, foi utilizado um repetidor para iterar sobre os tamanhos dos vetores que se deseja testar
         */
         for (int i = 0; i < vetorTamanho.length; i++) { 
             int tamanho = vetorTamanho[i];
@@ -45,8 +46,9 @@ public class Algoritmo_Ordenacao {
 
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
             /* Arrays.copyOf:
-             Esse método pertence a classe 'java.util.Arrays', sendo usado para copiar um array e retornar outro. Esse que ele retorna é uma cópia do primeiro.
-             Util para criar uma cópia de uma matriz com um tamanho específico sem alterar a matriz original.
+             Esse método pertence a classe 'java.util.Arrays', sendo usado para copiar um array e retornar outro. Esse que ele retorna é uma cópia do primeiro
+             Util para criar uma cópia de uma matriz com um tamanho específico sem alterar a matriz original
+             Neste contexto, está sendo usado para criar cópias dos vetores aleatórios gerados para garantir que cada algoritmo de ordenação receba um vetor não ordenado idêntico
             */
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
@@ -68,7 +70,7 @@ public class Algoritmo_Ordenacao {
     }
 
     public static void calcTemp(int[] vetor){
-        long tempoInicio = System.currentTimeMillis();
+        long tempoInicio = System.nanoTime();
         //Da para substituir para nanoTime();
         /*CurrentTimeMillis:
          É um metodo que retorna a hora atual em millissegundos, um número (long) que representa a quantidade de milissegundos que se passou desde tal instante.
@@ -113,7 +115,7 @@ public class Algoritmo_Ordenacao {
             default:
                 System.out.println("Algoritmo desconhecido");
         }
-        long tempoFim = System.currentTimeMillis();
+        long tempoFim = System.nanoTime();
         double tempoDecorrido = (tempoFim - tempoInicio) / 1000.0;
 
         System.out.println(algoritmo + " - Tamanho: " + vetor.length + " - Tempo: " + tempoDecorrido + " segundos");
@@ -122,6 +124,38 @@ public class Algoritmo_Ordenacao {
     //------------------------------------------
     //Implementações dos algoritmos de ordenação:
     //------------------------------------------
+
+    public static int particao(int[] vetor, int inicio, int fim){
+
+        //Variaveis
+        int pivo;
+        int i, j;
+
+        //Entrada
+        pivo = vetor[fim];
+        i = inicio - 1;
+        
+        //Processamento
+        for (j = inicio; j < fim; j++){
+            if (vetor[j] <= pivo){
+                i++;
+                trocar(vetor, i, j);
+            }
+        }
+        trocar(vetor, i + 1, fim);
+        return i + 1;
+    }
+
+    public static void trocar(int[] vetor, int i, int j){
+
+        //Variaveis
+        int temp;
+        
+        //Processamento
+        temp = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = temp;
+    }
 
     public static void bubbleSort(int[] vetor){
 
@@ -136,8 +170,7 @@ public class Algoritmo_Ordenacao {
         for(i = 0; i < valores - 1; i++){
             for(j = 0; j < valores - 1 - i; j++){
                 if(vetor[j] > vetor[j + 1]){
-                    vetor[j] = vetor[j + 1];
-                    vetor[j + 1] = temp;
+                    trocar(vetor, i, j);
                 }
             }
         }
@@ -194,7 +227,7 @@ public class Algoritmo_Ordenacao {
     public static void mergeSort(int[] vetor){
         
         //Variaveis
-        intt meio;
+        int meio;
         int[] esquerda;
         int[] direita;
 
@@ -254,13 +287,13 @@ public class Algoritmo_Ordenacao {
         contadorVetor = new int[maximo + 1];
     
         //Contagem das ocorrências de cada elemento no vetor
-        for(int j = 0; j < vetorTamanho.length; j++){ //ou (int j : vetor)
-            int tamanho = vetorTamanho[j];
+        for(int j = 0; j < vetor.length; j++){ //ou (int j : vetor)
+            int tamanho = vetor[j];
             contadorVetor[j]++;
         }
     
         //Reconstrução do vetor já ordenado
-        for (i = 0; i < countArray.length; i++) {
+        for (i = 0; i < contadorVetor.length; i++) {
             while (contadorVetor[i] > 0) {
                 vetor[aux++] = i;
                 contadorVetor[i]--;
@@ -276,6 +309,7 @@ public class Algoritmo_Ordenacao {
          //Processamento
          maximo = Arrays.stream(vetor).max().orElse(0);
          minimo = Arrays.stream(vetor).min().orElse(0);
+         //É usado aqui para obter o valor máximo em um vetor usando '.max()' e '.min:'. Em Arrays.stream(vetor).max().orElse(0), .min() é usado para obter o valor mínimo no vetor.
 
          alcance = maximo - minimo + 1;
          contador = new int[alcance];
@@ -311,7 +345,7 @@ public class Algoritmo_Ordenacao {
     }
 
     public static void radixSort(int[] vetor){
-
+        
         //Variaveis
         int maximo;
         int exp;
@@ -375,38 +409,6 @@ public class Algoritmo_Ordenacao {
         }
     }
     
-    public static int particao(int[] vetor, int inicio, int fim){
-
-        //Variaveis
-        int pivo;
-        int i, j;
-
-        //Entrada
-        pivo = vetor[fim];
-        i = inicio - 1;
-        
-        //Processamento
-        for (j = inicio; j < fim; j++){
-            if (vetor[j] <= pivo){
-                i++;
-                trocar(vetor, i, j);
-            }
-        }
-        trocar(vetor, i + 1, fim);
-        return i + 1;
-    }
-
-    public static void trocar(int[] vetor, int i, int j){
-
-        //Variaveis
-        int temp;
-        
-        //Processamento
-        temp = vetor[i];
-        vetor[i] = vetor[j];
-        vetor[j] = temp;
-    }
-
     public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo){
        
         //Condição de funcionamento
