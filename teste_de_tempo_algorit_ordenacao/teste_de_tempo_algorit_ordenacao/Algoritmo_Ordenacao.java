@@ -21,10 +21,10 @@
  - código com os algoritmos de ordenação e a medição de tempo
 */
 
-//pacote
+//Pacote
 package teste_de_tempo_algorit_ordenacao;
 
-//bibliotecas importadas
+//Bibliotecas importadas
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -32,12 +32,12 @@ import java.util.Scanner;
 public class Algoritmo_Ordenacao {
 
     public static void main(String[] args){
-        //vetor de teste de tempo de resposta
+        //Vetor de teste de tempo de resposta
         int[] vetorTamanho = {100, 1000, 10000, 100000, 1000000, 10000000};
 
-        //foreach
-        //for (int tamanho : vetorTamanho){
-        //O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido.
+        /* for(int tamanho : vetorTamanho){
+         O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido.
+        */
         for (int i = 0; i < vetorTamanho.length; i++) { 
             int tamanho = vetorTamanho[i];
 
@@ -253,18 +253,50 @@ public class Algoritmo_Ordenacao {
         maximo = Arrays.stream(vetor).max().orElse(0);
         contadorVetor = new int[maximo + 1];
     
-            //Contagem das ocorrências de cada elemento no vetor
-        for (int n : vetor) {
-            contadorVetor[n]++;
+        //Contagem das ocorrências de cada elemento no vetor
+        for(int j = 0; j < vetorTamanho.length; j++){ //ou (int j : vetor)
+            int tamanho = vetorTamanho[j];
+            contadorVetor[j]++;
         }
     
-            //Reconstrução do vetor já ordenado
+        //Reconstrução do vetor já ordenado
         for (i = 0; i < countArray.length; i++) {
             while (contadorVetor[i] > 0) {
                 vetor[aux++] = i;
                 contadorVetor[i]--;
             }
         }
+
+        /*Outro código
+         //Variaveis
+         int maximo, minimo, alcance;
+         int[] contador;
+         int[] saida;
+
+         //Processamento
+         maximo = Arrays.stream(vetor).max().orElse(0);
+         minimo = Arrays.stream(vetor).min().orElse(0);
+
+         alcance = maximo - minimo + 1;
+         contador = new int[alcance];
+         saida = new int[vetor.length];
+
+         for (int i : vetor){
+            contador[i - minimo]++;
+         }
+
+         for (int i = 1; i < alcance; i++){
+            contador[i] += contador[i - 1];
+         }
+
+         for (int i = vetor.length - 1; i >= 0; i--){
+            saida[contador[vetor[i] - minimo] - 1] = vetor[i];
+            contador[vetor[i] - minimo]--;
+         }
+
+         //Saida
+         System.arraycopy(saida, 0, vetor, 0, vetor.length);
+        */
 
         /* Arrays.stream:
          É um metodo que pertence à classe 'java.util.Arrays' também. Utilizado para converter um array em um fluxo(stream).
@@ -273,36 +305,8 @@ public class Algoritmo_Ordenacao {
         /* Como funciona esse trecho de código:
          Portanto, .max() ou .min() são operações de fluxo que retornam um Optional<T> representando o valor máximo ou mínimo no fluxo, respectivamente. O método .orElse(defaultValue) é usado para fornecer um valor padrão caso o valor não esteja presente. 
         */
-
-        /*Outro código
-        //Variaveis
-        int maximo, minimo, alcance;
-        int[] contador;
-        int[] saida;
-
-        //Processamento
-        maximo = Arrays.stream(vetor).max().orElse(0);
-        minimo = Arrays.stream(vetor).min().orElse(0);
-
-        alcance = maximo - minimo + 1;
-        contador = new int[alcance];
-        saida = new int[vetor.length];
-
-        for (int i : vetor){
-            contador[i - minimo]++;
-        }
-
-        for (int i = 1; i < alcance; i++){
-            contador[i] += contador[i - 1];
-        }
-
-        for (int i = vetor.length - 1; i >= 0; i--){
-            saida[contador[vetor[i] - minimo] - 1] = vetor[i];
-            contador[vetor[i] - minimo]--;
-        }
-
-        //Saida
-        System.arraycopy(saida, 0, vetor, 0, vetor.length);
+        /* O'que é um Optional<T>:
+         É uma classe que permite que um objeto possa ou não ter um valor. Usado para evitar exceções de ponteiro nulo e tornar o código mais seguro e legível.
         */
     }
 
@@ -322,8 +326,8 @@ public class Algoritmo_Ordenacao {
     private static void countingSortRadix(int[] vetor, int exp){
 
         //Variaveis
-        int n;
-        int[] saida;
+        int n, i;
+        int[] saida; //Usado para armazenar os elementos ordenados
         int[] contador;
 
         //Entrada
@@ -333,19 +337,21 @@ public class Algoritmo_Ordenacao {
         Arrays.fill(contador, 0);
 
         //Processamento
-        for (int i = 0; i < n; i++){
+        //O algoritmo conta o número de ocorrências de cada dígito nas posições atuais. 'exp' é um fator de exponenciação usado para selecionar o dígito relevante na iteração atual
+        for (i = 0; i < n; i++){
             contador[(vetor[i] / exp) % 10]++;
         }
 
-        for (int i = 1; i < 10; i++){
+        //Ajustar os contadores para indicar a posição de cada dígito no array de saída
+        for (i = 1; i < 10; i++){
             contador[i] += contador[i - 1];
         }
 
-        for (int i = n - 1; i >= 0; i--){
+        //Coloca os elementos em suas posições no array de saída pela ordenação do digito atual
+        for (i = n - 1; i >= 0; i--){
             saida[contador[(vetor[i] / exp) % 10] - 1] = vetor[i];
             contador[(vetor[i] / exp) % 10]--;
         }
-
         System.arraycopy(saida, 0, vetor, 0, n);
     }
 
@@ -353,24 +359,31 @@ public class Algoritmo_Ordenacao {
         quickSortRecursivo(vetor, 0, vetor.length - 1);
     }
     
-    private static void quickSortRecursivo(int[] vetor, int inicio, int fim){
+    public static void quickSortRecursivo(int[] vetor, int inicio, int fim){
 
         //Variaveis
         int indiceParticao;
 
         //Processamento
         if(inicio < fim){
+            //Encontrar o indice de partição para divisão do array
             indiceParticao = particao(vetor, inicio, fim);
-            
+            //Chamada recursiva para a ordenação apenas da parte esquerda do array
             quickSortRecursivo(vetor, inicio, indiceParticao - 1);
+            //Chamada recursiva para a ordenação apenas da parte direita do array
             quickSortRecursivo(vetor, indiceParticao + 1, fim);
         }
     }
     
-    private static int particao(int[] vetor, int inicio, int fim){
+    public static int particao(int[] vetor, int inicio, int fim){
+
         //Variaveis
-        int pivo = vetor[fim];
-        int i = inicio - 1, j;
+        int pivo;
+        int i, j;
+
+        //Entrada
+        pivo = vetor[fim];
+        i = inicio - 1;
         
         //Processamento
         for (j = inicio; j < fim; j++){
@@ -383,7 +396,7 @@ public class Algoritmo_Ordenacao {
         return i + 1;
     }
 
-    private static void trocar(int[] vetor, int i, int j){
+    public static void trocar(int[] vetor, int i, int j){
 
         //Variaveis
         int temp;
@@ -395,15 +408,25 @@ public class Algoritmo_Ordenacao {
     }
 
     public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo){
+       
+        //Condição de funcionamento
         if(valorMinimo >= valorMaximo){
             throw new IllegalArgumentException("valorMinimo deve ser menor que valorMaximo");
             //Caso não atendida, lançar uma exceção indicando que há um argumento que não está dentro do intervalo válido esperado. 
         }
 
-        int[] vetor = new int[tamanho];
-        Random aleatorio = new Random();
+        //Variaveis
+        int[] vetor;
+        Random aleatorio;
 
+        //Entrada
+        vetor = new int[tamanho];
+        aleatorio = new Random(); //Gerador de números aleatórios
+
+        //Processamento - Preencher o vetor com os números aleatórios
+        //Sistema de repetição com incrementação do 'i'
         for(int i = 0; i < tamanho; i++){
+            //Gera um número aleatório dentro do intervalo do 'valorMaximo' e do 'valorMínimo', atribuindo a posição 'i'
             vetor[i] = aleatorio.nextInt(valorMaximo - valorMinimo + 1) + valorMinimo;
         }
         return vetor;
