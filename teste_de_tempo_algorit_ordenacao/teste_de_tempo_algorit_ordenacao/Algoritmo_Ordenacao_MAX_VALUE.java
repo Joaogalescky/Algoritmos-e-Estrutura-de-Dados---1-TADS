@@ -29,93 +29,83 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Algoritmo_Ordenacao{
+public class Algoritmo_Ordenacao_MAX_VALUE{
 
     public static void main(String[] args){
-
-        //Variaveis
-        int[] vetorRandomico;
-        int tamanho, i, rep = 10;
-
-        //Entrada
         //Vetor de teste de tempo de resposta
-        int[] vetorTamanho = {100}; //100, 1000, 10000, 100000, 1000000, 10000000
+        int[] tamanhos = {100, 1000, 10000, 100000, 1000000, 10000000};
+        int[] valoresMaximos = {10000, Integer.MAX_VALUE}; //ou 100, 1000, 10000, 100000, 1000000, 10000000
 
-        //Processamento
         /* for(int tamanho : vetorTamanho){
          O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido
          Neste contexto, foi utilizado um repetidor para iterar sobre os tamanhos dos vetores que se deseja testar
         */
-        for (i = 0; i < vetorTamanho.length; i++){ 
-            tamanho = vetorTamanho[i];
-            vetorRandomico = geradorRandomVetor(tamanho, 0, 100);//Para Testes, alterar o valorMaximo pelo valor do tamanho do vetorTamanho
-
-            /* Arrays.copyOf:
-             Esse método pertence a classe 'java.util.Arrays', sendo usado para copiar um array e retornar outro. Esse que ele retorna é uma cópia do primeiro
-             Util para criar uma cópia de uma matriz com um tamanho específico sem alterar a matriz original
-             Neste contexto, está sendo usado para criar cópias dos vetores aleatórios gerados para garantir que cada algoritmo de ordenação receba um vetor não ordenado idêntico
-            */
-            for(i = 0; i < rep; i++){
-            calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
+        for (int tamanho : tamanhos) {
+            for (int valorMaximo : valoresMaximos) {
+                int[] vetorRandomico = geradorRandomVetor(tamanho, 0, valorMaximo);
+    
+                // Para testar Integer.MAX_VALUE
+                calcTemp(Arrays.copyOf(vetorRandomico, tamanho), 1, Integer.MAX_VALUE);
+    
+                System.out.println();
             }
-
-            System.out.println();
         }
     }
 
-    public static void calcTemp(int[] vetor){
-        long tempoInicio = System.nanoTime();
-        //Da para substituir para nanoTime();
-        /*CurrentTimeMillis:
-         É um metodo que retorna a hora atual em millissegundos, um número (long) que representa a quantidade de milissegundos que se passou desde tal instante.
-        */
-        Scanner entrada = new Scanner(System.in);
+    public static void calcTemp(int[] vetor, int execucoes, int valorEspecifico){
+        for (int i = 0; i < execucoes; i++) {
+            long tempoInicio = System.nanoTime();
+            //Da para substituir para nanoTime();
+            /*CurrentTimeMillis:
+            É um metodo que retorna a hora atual em millissegundos, um número (long) que representa a quantidade de milissegundos que se passou desde tal instante.
+            */
+            Scanner entrada = new Scanner(System.in);
 
-        //Menu de seleção
-        System.out.println("\nTeste de tempo de resposta dos algoritmos de ordenação");
-        System.out.println("Escolha uma opção:");
-        System.out.println("1. bubbleSort");
-        System.out.println("2. insertionSort");
-        System.out.println("3. selectionSort");
-        System.out.println("4. mergeSort");
-        System.out.println("5. countingSort");
-        System.out.println("6. radixSort");
-        System.out.println("7. quickSort");
+            //Menu de seleção
+            System.out.println("\nTeste de tempo de resposta dos algoritmos de ordenação");
+            System.out.println("Escolha uma opção:");
+            System.out.println("1. bubbleSort");
+            System.out.println("2. insertionSort");
+            System.out.println("3. selectionSort");
+            System.out.println("4. mergeSort");
+            System.out.println("5. countingSort");
+            System.out.println("6. radixSort");
+            System.out.println("7. quickSort");
 
-        int algoritmo = entrada.nextInt();
+            int algoritmo = entrada.nextInt();
+            switch (algoritmo){
+                case 1: //"BubbleSort"
+                    bubbleSort(vetor);
+                    break;
+                case 2: //"InsertionSort"
+                    insertionSort(vetor);
+                    break;
+                case 3: //"SelectionSort"
+                    selectionSort(vetor);
+                    break;
+                case 4: //"MergeSort"
+                    mergeSort(vetor);
+                    break;
+                case 5: //"CountingSort"
+                    countingSort(vetor);
+                    break;
+                case 6: //"RadixSort"
+                    radixSort(vetor);
+                    break;
+                case 7: //"QuickSort"
+                    quickSort(vetor);
+                    break;
+                default:
+                    System.out.println("Algoritmo desconhecido");
+            }
+            long tempoFim = System.nanoTime();
+            double tempoDecorrido = (tempoFim - tempoInicio) / 1e9; //Convertendo para segundos
 
-        switch (algoritmo){
-            case 1: //"BubbleSort"
-                bubbleSort(vetor);
-                break;
-            case 2: //"InsertionSort"
-                insertionSort(vetor);
-                break;
-            case 3: //"SelectionSort"
-                selectionSort(vetor);
-                break;
-            case 4: //"MergeSort"
-                mergeSort(vetor);
-                break;
-            case 5: //"CountingSort"
-                countingSort(vetor);
-                break;
-            case 6: //"RadixSort"
-                radixSort(vetor);
-                break;
-            case 7: //"QuickSort"
-                quickSort(vetor);
-                break;
-            default:
-                System.out.println("Algoritmo desconhecido");
+            //Limitando as casas decimais para 4
+            tempoDecorrido = Math.round(tempoDecorrido * 10000.0) / 10000.0;
+
+            System.out.println(algoritmo + " - Tamanho: " + vetor.length + " - Tempo: " + tempoDecorrido + " segundos");
         }
-        long tempoFim = System.nanoTime();
-        double tempoDecorrido = (tempoFim - tempoInicio) / 1e9; //Convertendo para segundos
-
-        //Limitando as casas decimais para 4
-        tempoDecorrido = Math.round(tempoDecorrido * 10000.0) / 10000.0;
-
-        System.out.println(algoritmo + " - Tamanho: " + vetor.length + " - Tempo: " + tempoDecorrido + " segundos");
     }
 
     //------------------------------------------
@@ -157,11 +147,10 @@ public class Algoritmo_Ordenacao{
     public static void bubbleSort(int[] vetor){
 
         //Variaveis
-        int i, j, valores, temp;
+        int i, j, valores;
 
         //Entrada
         valores = vetor.length;
-        temp = 0;
     
         //Processamento
         for(i = 0; i < valores - 1; i++){
@@ -285,7 +274,6 @@ public class Algoritmo_Ordenacao{
     
         //Contagem das ocorrências de cada elemento no vetor
         for(int j = 0; j < vetor.length; j++){ //ou (int j : vetor)
-            int tamanho = vetor[j];
             contadorVetor[j]++;
         }
     
@@ -373,11 +361,10 @@ public class Algoritmo_Ordenacao{
             quickSortRecursivo(vetor, indiceParticao + 1, fim);
         }
     }
-    
-    public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo){
-       
+
+    public static int[] geradorRandomVetor(int tamanho, int valorMinimo, int valorMaximo) {
         //Condição de funcionamento
-        if(valorMinimo >= valorMaximo){
+        if (valorMinimo >= valorMaximo) {
             throw new IllegalArgumentException("valorMinimo deve ser menor que valorMaximo");
             //Caso não atendida, lançar uma exceção indicando que há um argumento que não está dentro do intervalo válido esperado. 
         }
@@ -385,16 +372,15 @@ public class Algoritmo_Ordenacao{
         //Variaveis
         int[] vetor;
         Random aleatorio;
-
-        //Entrada
+    
         vetor = new int[tamanho];
         aleatorio = new Random(); //Gerador de números aleatórios
-
+    
         //Processamento - Preencher o vetor com os números aleatórios
         //Sistema de repetição com incrementação do 'i'
-        for(int i = 0; i < tamanho; i++){
-            //Gera um número aleatório dentro do intervalo do 'valorMaximo' e do 'valorMínimo', atribuindo a posição 'i'
-            vetor[i] = aleatorio.nextInt(valorMaximo - valorMinimo + 1) + valorMinimo;
+        for (int i = 0; i < tamanho; i++) {
+            // Usar um intervalo menor para evitar estouro
+            vetor[i] = aleatorio.nextInt(valorMaximo - valorMinimo) + valorMinimo;
         }
         return vetor;
     }
