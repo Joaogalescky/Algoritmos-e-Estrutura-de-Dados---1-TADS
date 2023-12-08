@@ -74,13 +74,13 @@ public class Algoritmo_Ordenacao{
         //Menu de seleção
         System.out.println("\nTeste de tempo de resposta dos algoritmos de ordenação");
         System.out.println("Escolha uma opção:");
-        System.out.println("1. bubbleSort");
-        System.out.println("2. insertionSort");
-        System.out.println("3. selectionSort");
-        System.out.println("4. mergeSort");
-        System.out.println("5. countingSort");
-        System.out.println("6. radixSort");
-        System.out.println("7. quickSort");
+        System.out.println("1. BubbleSort");
+        System.out.println("2. InsertionSort");
+        System.out.println("3. SelectionSort");
+        System.out.println("4. MergeSort");
+        System.out.println("5. CountingSort");
+        System.out.println("6. RadixSort");
+        System.out.println("7. QuickSort");
 
         int algoritmo = entrada.nextInt();
 
@@ -110,6 +110,9 @@ public class Algoritmo_Ordenacao{
                 System.out.println("Algoritmo desconhecido");
         }
         long tempoFim = System.nanoTime();
+        /* System.nanoTime;
+         É um método em que retorna o tempo atual em nanossegundos, mais precisa que System.currentTimeMillis()
+        */
         double tempoDecorrido = (tempoFim - tempoInicio) / 1e9; //Convertendo para segundos
 
         //Limitando as casas decimais para 4
