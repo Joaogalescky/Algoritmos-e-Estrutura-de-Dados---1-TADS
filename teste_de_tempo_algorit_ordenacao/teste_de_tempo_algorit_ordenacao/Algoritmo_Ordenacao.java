@@ -33,7 +33,7 @@ public class Algoritmo_Ordenacao {
 
     public static void main(String[] args){
         //Vetor de teste de tempo de resposta
-        int[] vetorTamanho = {100};
+        int[] vetorTamanho = {100}; //100, 1000, 10000, 100000, 1000000, 10000000
 
         /* for(int tamanho : vetorTamanho){
          O ':' é o operador usado para separar a variável de iteração do array que está sendo percorrido
@@ -41,7 +41,6 @@ public class Algoritmo_Ordenacao {
         */
         for (int i = 0; i < vetorTamanho.length; i++) { 
             int tamanho = vetorTamanho[i];
-
             int[] vetorRandomico = geradorRandomVetor(tamanho, 0, 100);//Para Testes, alterar o valorMaximo pelo valor do tamanho do vetorTamanho
 
             calcTemp(Arrays.copyOf(vetorRandomico, tamanho));
